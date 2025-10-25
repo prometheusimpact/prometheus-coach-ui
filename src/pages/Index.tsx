@@ -6,11 +6,14 @@ import { InfoCard } from "@/components/Exercise/InfoCard";
 import { ProgramTile } from "@/components/Exercise/ProgramTile";
 import { RelatedWorkouts } from "@/components/Exercise/RelatedWorkouts";
 import { Dumbbell, Target, Zap, Bookmark, Share2 } from "lucide-react";
+import { useTheme } from "next-themes";
 import exerciseHero from "@/assets/exercise-hero.jpg";
 import gradientBg from "@/assets/gradient-bg.jpg";
+import gradientBgDark from "@/assets/gradient-bg-dark.png";
 import squatWorkout from "@/assets/squat-workout.jpg";
 
 const Index = () => {
+  const { theme } = useTheme();
   const relatedWorkouts = [
     { name: "Front Squat", image: squatWorkout },
     { name: "Anderson Squat", image: squatWorkout }
@@ -19,7 +22,7 @@ const Index = () => {
   return (
     <div 
       className="min-h-screen flex bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: `url(${gradientBg})` }}
+      style={{ backgroundImage: `url(${theme === "dark" ? gradientBgDark : gradientBg})` }}
     >
       {/* Desktop Sidebar */}
       <Sidebar />
@@ -50,8 +53,8 @@ const Index = () => {
               {/* Mobile Info Cards */}
               <div className="lg:hidden space-y-4">
                 <div className="flex items-center gap-3 flex-wrap">
-                  <div className="bg-primary rounded-2xl px-4 py-2 border-2 border-white">
-                    <span className="text-white font-medium">Equipment: Barbell, Rack</span>
+                  <div className="bg-primary rounded-2xl px-4 py-2">
+                    <span className="text-white font-normal">Equipment: Barbell, Rack</span>
                   </div>
                   <button className="glass rounded-2xl px-4 py-2 flex items-center gap-2 hover:bg-background/60 transition-smooth">
                     <Bookmark size={18} className="text-foreground" />
@@ -103,8 +106,8 @@ const Index = () => {
               <ExerciseHeader title="Barbell Back Squat" />
               
               <div className="flex items-center gap-3 flex-wrap">
-                <div className="bg-primary rounded-2xl px-5 py-3 border-2 border-white">
-                  <span className="text-white font-medium">Equipment: Barbell, Rack</span>
+                <div className="bg-primary rounded-2xl px-5 py-3">
+                  <span className="text-white font-normal">Equipment: Barbell, Rack</span>
                 </div>
                 <button className="glass rounded-2xl px-4 py-2 flex items-center gap-2 hover:bg-background/60 transition-smooth">
                   <Bookmark size={18} className="text-foreground" />

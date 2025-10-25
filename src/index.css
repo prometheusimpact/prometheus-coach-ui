@@ -65,6 +65,54 @@ All colors MUST be HSL.
     --glow-orange: 0 0 30px hsl(23 87% 55% / 0.3);
     --glow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
   }
+
+  .dark {
+    /* Prometheus Coach Dark Theme */
+    --background: 0 0% 8%;
+    --background-secondary: 0 0% 12%;
+    --foreground: 0 0% 98%;
+    
+    /* Glassmorphic layers for dark mode */
+    --glass: 0 0% 20% / 0.4;
+    --glass-border: 0 0% 100% / 0.1;
+    --glass-hover: 0 0% 25% / 0.5;
+    
+    /* Primary colors remain the same */
+    --primary: 23 87% 55%;
+    --primary-glow: 23 87% 65%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary grays for dark */
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 90%;
+    
+    /* Muted elements */
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 60%;
+    
+    /* Accent states */
+    --accent: 23 87% 55%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* UI Elements */
+    --card: 0 0% 15% / 0.4;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+    
+    --border: 0 0% 100% / 0.12;
+    --input: 0 0% 100% / 0.12;
+    --ring: 23 87% 55%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    /* Shadows & Glows for dark */
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    --glow-orange: 0 0 30px hsl(23 87% 55% / 0.4);
+    --glow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
 }
 
 @layer base {
@@ -91,6 +139,11 @@ All colors MUST be HSL.
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow: var(--shadow-glass);
+  }
+  
+  .dark .glass {
+    background: rgba(50, 50, 50, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   .glass-hover {
