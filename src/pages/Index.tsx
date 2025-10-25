@@ -18,7 +18,7 @@ const Index = () => {
       <Sidebar />
       
       {/* Main Content */}
-      <main className="flex-1 lg:ml-20 pb-20 lg:pb-8">
+      <main className="flex-1 lg:ml-20 pb-20 lg:pb-8 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
           {/* Mobile Header */}
           <div className="lg:hidden mb-6">
