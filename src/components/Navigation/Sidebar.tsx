@@ -1,4 +1,5 @@
 import { LayoutDashboard, Compass, Bookmark, Users, UserPlus, Calendar, Mail } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 interface NavItem {
   icon: React.ElementType;
@@ -20,8 +21,8 @@ export const Sidebar = () => {
   return (
     <aside className="hidden lg:flex flex-col items-center w-20 h-screen glass border-r border-glass-border fixed left-0 top-0 py-6 gap-6">
       {/* Logo */}
-      <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center glow-orange">
-        <span className="text-primary-foreground font-heading text-xl font-bold">P</span>
+      <div className="w-12 h-12 flex items-center justify-center">
+        <img src={logo} alt="Prometheus Coach" className="w-10 h-10 object-contain" />
       </div>
       
       {/* Navigation Icons */}
