@@ -42,7 +42,7 @@ export const Sidebar = () => {
       {/* Logo */}
       <div className="flex items-center px-6 mb-8 overflow-hidden">
         <motion.img
-          src={theme === "dark" ? logoWhite : (open ? logoFull : logoIcon)}
+          src={open ? (theme === "dark" ? logoWhite : logoFull) : logoIcon}
           alt="Prometheus Coach"
           animate={{
             width: open ? "160px" : "40px",
