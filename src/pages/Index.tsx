@@ -51,7 +51,7 @@ const Index = () => {
               </div>
               
               {/* Mobile Info Cards */}
-              <div className="lg:hidden space-y-4">
+              <div className="lg:hidden lg:col-span-7 space-y-4">
               <div className="flex items-center gap-3 flex-wrap">
                 <div className="bg-primary rounded-2xl px-4 py-2">
                   <span className="text-white font-normal">Equipment: Barbell, Rack</span>
@@ -200,49 +200,49 @@ const Index = () => {
                   <ProgramTile label="Weight" value="135 lb" />
                 </div>
               </div>
+            </div>
+          </div>
 
-              {/* Workout Metrics */}
-              <div>
-                <p className="text-base font-medium text-foreground mb-4">Workout Metrics</p>
-                <div className="grid grid-cols-1 gap-3">
-                  <InfoCard
-                    icon={Flame}
-                    label="Calories Burned"
-                    value={
-                      <div className="text-sm space-y-1">
-                        <div>Per set: ~6–8 calories</div>
-                        <div>Total (4 sets): ~25–35 calories</div>
-                        <div>With rest: ~40–60 calories total</div>
-                      </div>
-                    }
-                  />
-                  <InfoCard
-                    icon={Weight}
-                    label="Total Volume"
-                    value="135 lb × ~40 reps = 5,400 lb lifted"
-                  />
-                  <InfoCard
-                    icon={Clock}
-                    label="Time Under Tension"
-                    value="~1 min total (3 s eccentric + 1 s concentric per rep)"
-                  />
-                  <InfoCard
-                    icon={Heart}
-                    label="Heart Rate Range"
-                    value="~120–150 bpm (moderate intensity)"
-                  />
-                  <InfoCard
-                    icon={Activity}
-                    label="Metabolic Equivalent (MET)"
-                    value="~6 METs (strength training, moderate–vigorous)"
-                  />
-                  <InfoCard
-                    icon={TrendingUp}
-                    label="Calories/minute"
-                    value="~5–8 cal/min (based on bodyweight)"
-                  />
-                </div>
-              </div>
+          {/* Workout Metrics - Full Width on Desktop */}
+          <div className="hidden lg:block mt-8">
+            <p className="text-base font-medium text-foreground mb-4">Workout Metrics</p>
+            <div className="grid grid-cols-3 gap-4">
+              <InfoCard
+                icon={Flame}
+                label="Calories Burned"
+                value={
+                  <div className="text-sm space-y-1">
+                    <div>Per set: ~6–8 calories</div>
+                    <div>Total (4 sets): ~25–35 calories</div>
+                    <div>With rest: ~40–60 calories total</div>
+                  </div>
+                }
+              />
+              <InfoCard
+                icon={Weight}
+                label="Total Volume"
+                value="135 lb × ~40 reps = 5,400 lb lifted"
+              />
+              <InfoCard
+                icon={Clock}
+                label="Time Under Tension"
+                value="~1 min total (3 s eccentric + 1 s concentric per rep)"
+              />
+              <InfoCard
+                icon={Heart}
+                label="Heart Rate Range"
+                value="~120–150 bpm (moderate intensity)"
+              />
+              <InfoCard
+                icon={Activity}
+                label="Metabolic Equivalent (MET)"
+                value="~6 METs (strength training, moderate–vigorous)"
+              />
+              <InfoCard
+                icon={TrendingUp}
+                label="Calories/minute"
+                value="~5–8 cal/min (based on bodyweight)"
+              />
             </div>
           </div>
         </div>
