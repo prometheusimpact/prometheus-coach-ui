@@ -20,9 +20,9 @@ const navItems: NavItem[] = [
   { icon: Bookmark, label: "Saved" },
   { icon: Users, label: "Clients" },
   { icon: Calendar, label: "Calendar" },
-  { icon: Mail, label: "Inbox" },
   { icon: UserPlus, label: "Requests" },
   { icon: Settings, label: "Settings" },
+  { icon: Mail, label: "Inbox" },
 ];
 
 export const Sidebar = () => {
