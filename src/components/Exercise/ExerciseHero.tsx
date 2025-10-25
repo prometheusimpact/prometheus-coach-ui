@@ -8,11 +8,11 @@ interface ExerciseHeroProps {
 
 export const ExerciseHero = ({ image, alt, title }: ExerciseHeroProps) => {
   return (
-    <div className="relative w-full aspect-video lg:aspect-[16/10] rounded-3xl overflow-hidden">
+    <div className="relative w-full aspect-video lg:aspect-[16/10] rounded-3xl overflow-hidden group">
       <img 
         src={image} 
         alt={alt}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
       <div className="absolute inset-x-0 bottom-0 h-32 backdrop-blur-sm bg-gradient-to-t from-background/20 to-transparent" />
       {title && (

@@ -17,11 +17,13 @@ export const RelatedWorkouts = ({ workouts }: RelatedWorkoutsProps) => {
             key={workout.name}
             className="glass rounded-2xl p-3 flex items-center gap-3 group hover:bg-background/60 transition-smooth text-left"
           >
-            <img 
-              src={workout.image}
-              alt={workout.name}
-              className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
-            />
+            <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+              <img 
+                src={workout.image}
+                alt={workout.name}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+            </div>
             <span className="flex-1 text-sm font-medium text-foreground">
               {workout.name}
             </span>
