@@ -17,7 +17,7 @@ export const RelatedWorkouts = ({ workouts }: RelatedWorkoutsProps) => {
             key={workout.name}
             className="glass rounded-2xl p-3 flex items-center gap-3 group hover:bg-background/60 transition-smooth text-left"
           >
-            <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+            <div className="w-24 h-16 rounded-md overflow-hidden flex-shrink-0">
               <img 
                 src={workout.image}
                 alt={workout.name}
