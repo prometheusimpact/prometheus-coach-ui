@@ -32,6 +32,7 @@ const Index = () => {
               <ExerciseHero 
                 image={exerciseHero}
                 alt="Athlete performing barbell back squat"
+                title="Barbell Back Squat"
               />
               
               {/* Mobile Info Cards */}
