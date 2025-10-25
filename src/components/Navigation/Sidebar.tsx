@@ -69,7 +69,7 @@ export const Sidebar = () => {
                 flex items-center gap-3 px-3 py-3 rounded-xl transition-smooth
                 ${item.active 
                   ? 'bg-primary text-primary-foreground glow-orange' 
-                  : 'dark:text-white text-muted-foreground hover:text-foreground hover:bg-secondary'
+                  : 'dark:text-white text-muted-foreground hover:text-primary hover:bg-white dark:hover:bg-white/10'
                 }
               `}
               aria-label={item.label}
