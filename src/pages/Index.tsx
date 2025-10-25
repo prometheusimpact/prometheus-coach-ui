@@ -60,7 +60,7 @@ const Index = () => {
                 />
                 
                 <div>
-                  <p className="text-sm text-muted-foreground mb-3">Suggested Program</p>
+                  <p className="text-sm text-white mb-3">Suggested Program</p>
                   <div className="grid grid-cols-3 gap-3">
                     <ProgramTile label="Sets" value="4" />
                     <ProgramTile label="Reps" value="8-12" />
@@ -99,7 +99,7 @@ const Index = () => {
               />
               
               <div>
-                <p className="text-sm text-muted-foreground mb-4">Suggested Program</p>
+                <p className="text-sm text-white mb-4">Suggested Program</p>
                 <div className="grid grid-cols-3 gap-3">
                   <ProgramTile label="Sets" value="4" />
                   <ProgramTile label="Reps" value="8-12" />

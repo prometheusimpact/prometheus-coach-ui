@@ -20,7 +20,7 @@ export const InfoCard = ({ icon: Icon, label, value, variant = "default" }: Info
           </div>
         )}
         <div className="flex-1">
-          <p className="text-sm text-muted-foreground mb-1">{label}</p>
+          <p className="text-sm text-white mb-1">{label}</p>
           <div className="text-foreground font-medium">
             {value}
           </div>
