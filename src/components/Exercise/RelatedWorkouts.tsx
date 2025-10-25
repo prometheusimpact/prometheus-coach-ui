@@ -10,7 +10,7 @@ interface RelatedWorkoutsProps {
 export const RelatedWorkouts = ({ workouts }: RelatedWorkoutsProps) => {
   return (
     <div>
-      <p className="text-sm text-foreground mb-4">Suggested Workouts</p>
+      <p className="text-base font-medium text-foreground mb-4">Suggested Workouts</p>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         {workouts.map((workout) => (
           <button 

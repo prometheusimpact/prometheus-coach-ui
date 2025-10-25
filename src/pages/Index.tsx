@@ -50,7 +50,7 @@ const Index = () => {
               {/* Mobile Info Cards */}
               <div className="lg:hidden space-y-4">
                 <div className="flex items-center gap-3 flex-wrap">
-                  <div className="bg-primary rounded-2xl px-4 py-2">
+                  <div className="bg-primary rounded-2xl px-4 py-2 border-2 border-white">
                     <span className="text-white font-medium">Equipment: Barbell, Rack</span>
                   </div>
                   <button className="glass rounded-2xl px-4 py-2 flex items-center gap-2 hover:bg-background/60 transition-smooth">
@@ -83,7 +83,7 @@ const Index = () => {
                 />
                 
                 <div>
-                  <p className="text-sm text-foreground mb-3">Suggested Program</p>
+                  <p className="text-base font-medium text-foreground mb-3">Suggested Program</p>
                   <div className="grid grid-cols-3 gap-3">
                     <ProgramTile label="Sets" value="4" />
                     <ProgramTile label="Reps" value="8-12" />
@@ -103,7 +103,7 @@ const Index = () => {
               <ExerciseHeader title="Barbell Back Squat" />
               
               <div className="flex items-center gap-3 flex-wrap">
-                <div className="bg-primary rounded-2xl px-5 py-3">
+                <div className="bg-primary rounded-2xl px-5 py-3 border-2 border-white">
                   <span className="text-white font-medium">Equipment: Barbell, Rack</span>
                 </div>
                 <button className="glass rounded-2xl px-4 py-2 flex items-center gap-2 hover:bg-background/60 transition-smooth">
@@ -137,7 +137,7 @@ const Index = () => {
               />
               
               <div>
-                <p className="text-sm text-foreground mb-4">Suggested Program</p>
+                <p className="text-base font-medium text-foreground mb-4">Suggested Program</p>
                 <div className="grid grid-cols-3 gap-3">
                   <ProgramTile label="Sets" value="4" />
                   <ProgramTile label="Reps" value="8-12" />
