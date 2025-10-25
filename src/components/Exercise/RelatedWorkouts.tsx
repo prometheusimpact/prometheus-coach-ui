@@ -15,7 +15,7 @@ export const RelatedWorkouts = ({ workouts }: RelatedWorkoutsProps) => {
         {workouts.map((workout) => (
           <button 
             key={workout.name}
-            className="glass rounded-2xl p-3 flex items-center gap-3 group hover:bg-background/60 transition-smooth text-left"
+            className="glass rounded-2xl p-6 flex items-center gap-3 group hover:bg-background/60 transition-smooth text-left"
           >
             <div className="w-24 h-16 rounded-sm overflow-hidden flex-shrink-0">
               <img 
