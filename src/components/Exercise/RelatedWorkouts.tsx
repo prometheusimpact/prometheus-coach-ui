@@ -10,22 +10,24 @@ interface RelatedWorkoutsProps {
 export const RelatedWorkouts = ({ workouts }: RelatedWorkoutsProps) => {
   return (
     <div>
-      <p className="text-sm text-foreground mb-4">Related Workouts</p>
-      <div className="grid grid-cols-2 gap-3">
+      <p className="text-sm text-foreground mb-4">Suggested Workouts</p>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         {workouts.map((workout) => (
           <button 
             key={workout.name}
-            className="relative group rounded-2xl overflow-hidden transition-smooth cursor-pointer aspect-[4/3] w-full"
+            className="glass rounded-2xl p-3 flex items-center gap-3 group hover:bg-background/60 transition-smooth text-left"
           >
             <img 
               src={workout.image}
               alt={workout.name}
-              className="w-full h-full object-cover transition-smooth group-hover:scale-105"
+              className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent opacity-60 group-hover:opacity-90 transition-smooth" />
-            <div className="absolute inset-x-0 bottom-0 p-3 text-white">
-              <p className="text-sm font-medium">{workout.name}</p>
-            </div>
+            <span className="flex-1 text-sm font-medium text-foreground">
+              {workout.name}
+            </span>
+            <span className="text-xs text-foreground/70 group-hover:text-foreground transition-smooth">
+              Explore &gt;
+            </span>
           </button>
         ))}
       </div>
