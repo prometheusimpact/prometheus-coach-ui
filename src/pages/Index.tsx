@@ -5,7 +5,7 @@ import { ExerciseHero } from "@/components/Exercise/ExerciseHero";
 import { InfoCard } from "@/components/Exercise/InfoCard";
 import { ProgramTile } from "@/components/Exercise/ProgramTile";
 import { RelatedWorkouts } from "@/components/Exercise/RelatedWorkouts";
-import { Dumbbell, Target, Zap } from "lucide-react";
+import { Dumbbell, Target, Zap, Bookmark, Share2 } from "lucide-react";
 import exerciseHero from "@/assets/exercise-hero.jpg";
 import gradientBg from "@/assets/gradient-bg.jpg";
 import squatWorkout from "@/assets/squat-workout.jpg";
@@ -49,8 +49,18 @@ const Index = () => {
               
               {/* Mobile Info Cards */}
               <div className="lg:hidden space-y-4">
-                <div className="glass rounded-2xl px-4 py-2 inline-block">
-                  <span className="text-primary font-medium">Equipment: Barbell, Rack</span>
+                <div className="flex items-center gap-3 flex-wrap">
+                  <div className="bg-primary rounded-2xl px-4 py-2">
+                    <span className="text-white font-medium">Equipment: Barbell, Rack</span>
+                  </div>
+                  <button className="glass rounded-2xl px-4 py-2 flex items-center gap-2 hover:bg-background/60 transition-smooth">
+                    <Bookmark size={18} className="text-foreground" />
+                    <span className="text-sm font-medium text-foreground">Save</span>
+                  </button>
+                  <button className="glass rounded-2xl px-4 py-2 flex items-center gap-2 hover:bg-background/60 transition-smooth">
+                    <Share2 size={18} className="text-foreground" />
+                    <span className="text-sm font-medium text-foreground">Share</span>
+                  </button>
                 </div>
                 
                 <InfoCard
@@ -92,8 +102,18 @@ const Index = () => {
             <div className="hidden lg:block lg:col-span-5 space-y-6">
               <ExerciseHeader title="Barbell Back Squat" />
               
-              <div className="glass rounded-2xl px-5 py-3 inline-block">
-                <span className="text-primary font-medium">Equipment: Barbell, Rack</span>
+              <div className="flex items-center gap-3 flex-wrap">
+                <div className="bg-primary rounded-2xl px-5 py-3">
+                  <span className="text-white font-medium">Equipment: Barbell, Rack</span>
+                </div>
+                <button className="glass rounded-2xl px-4 py-2 flex items-center gap-2 hover:bg-background/60 transition-smooth">
+                  <Bookmark size={18} className="text-foreground" />
+                  <span className="text-sm font-medium text-foreground">Save</span>
+                </button>
+                <button className="glass rounded-2xl px-4 py-2 flex items-center gap-2 hover:bg-background/60 transition-smooth">
+                  <Share2 size={18} className="text-foreground" />
+                  <span className="text-sm font-medium text-foreground">Share</span>
+                </button>
               </div>
               
               <InfoCard
