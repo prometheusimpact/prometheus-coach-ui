@@ -19,9 +19,9 @@ const navItems: NavItem[] = [
   { icon: Compass, label: "Explore" },
   { icon: Bookmark, label: "Saved" },
   { icon: Users, label: "Clients" },
-  { icon: UserPlus, label: "Requests" },
   { icon: Calendar, label: "Calendar" },
   { icon: Mail, label: "Inbox" },
+  { icon: UserPlus, label: "Requests" },
   { icon: Settings, label: "Settings" },
 ];
 
