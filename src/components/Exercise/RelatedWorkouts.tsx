@@ -11,7 +11,7 @@ export const RelatedWorkouts = ({ workouts }: RelatedWorkoutsProps) => {
   return (
     <div>
       <p className="text-sm text-foreground mb-4">Related Workouts</p>
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 gap-3">
         {workouts.map((workout) => (
           <button 
             key={workout.name}

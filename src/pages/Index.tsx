@@ -8,15 +8,12 @@ import { RelatedWorkouts } from "@/components/Exercise/RelatedWorkouts";
 import { Dumbbell, Target, Zap } from "lucide-react";
 import exerciseHero from "@/assets/exercise-hero.jpg";
 import gradientBg from "@/assets/gradient-bg.jpg";
-import frontSquat from "@/assets/front-squat.jpg";
-import andersonSquat from "@/assets/anderson-squat.jpg";
-import gobletSquat from "@/assets/goblet-squat.jpg";
+import squatWorkout from "@/assets/squat-workout.jpg";
 
 const Index = () => {
   const relatedWorkouts = [
-    { name: "Front Squat", image: frontSquat },
-    { name: "Anderson Squat", image: andersonSquat },
-    { name: "Goblet Squat", image: gobletSquat }
+    { name: "Front Squat", image: squatWorkout },
+    { name: "Anderson Squat", image: squatWorkout }
   ];
 
   return (
