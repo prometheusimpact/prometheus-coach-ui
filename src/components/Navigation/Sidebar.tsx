@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { LayoutDashboard, Compass, Bookmark, Users, UserPlus, Calendar, Mail } from "lucide-react";
 import { motion } from "framer-motion";
-import logo from "@/assets/logo.png";
+import logoIcon from "@/assets/logo.png";
+import logoFull from "@/assets/logo-full.png";
 
 interface NavItem {
   icon: React.ElementType;
@@ -36,17 +37,19 @@ export const Sidebar = () => {
       onMouseLeave={() => setOpen(false)}
     >
       {/* Logo */}
-      <div className="flex items-center px-6 mb-8">
-        <img src={logo} alt="Prometheus Coach" className="w-10 h-10 object-contain flex-shrink-0" />
-        <motion.span
+      <div className="flex items-center px-6 mb-8 overflow-hidden">
+        <motion.img
+          src={open ? logoFull : logoIcon}
+          alt="Prometheus Coach"
           animate={{
-            opacity: open ? 1 : 0,
-            display: open ? "inline-block" : "none",
+            width: open ? "160px" : "40px",
           }}
-          className="ml-3 font-heading text-lg font-bold text-foreground whitespace-nowrap"
-        >
-          Prometheus
-        </motion.span>
+          transition={{
+            duration: 0.3,
+            ease: "easeInOut",
+          }}
+          className="h-auto object-contain"
+        />
       </div>
       
       {/* Navigation Icons */}
