@@ -23,7 +23,7 @@ export const ExerciseHero = ({ image, alt, title }: ExerciseHeroProps) => {
         </div>
       )}
       <button 
-        className="absolute bottom-6 right-6 glass glass-hover px-4 py-3 rounded-xl flex items-center gap-2 text-white transition-smooth hover:scale-105"
+        className="absolute bottom-6 right-6 glass glass-hover px-4 py-3 rounded-xl flex items-center gap-2 text-white transition-smooth hover:scale-105 hover:glow-orange"
         aria-label="Play video"
       >
         <Play className="w-5 h-5 fill-white" />
