@@ -5,7 +5,7 @@ import { ExerciseHero } from "@/components/Exercise/ExerciseHero";
 import { InfoCard } from "@/components/Exercise/InfoCard";
 import { ProgramTile } from "@/components/Exercise/ProgramTile";
 import { RelatedWorkouts } from "@/components/Exercise/RelatedWorkouts";
-import { Dumbbell, Target, Zap, Bookmark, Share2 } from "lucide-react";
+import { Dumbbell, Target, Zap, Bookmark, Share2, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import exerciseHero from "@/assets/exercise-hero.jpg";
 import gradientBg from "@/assets/gradient-bg.jpg";
@@ -13,7 +13,7 @@ import gradientBgDark from "@/assets/gradient-bg-dark.png";
 import squatWorkout from "@/assets/squat-workout.jpg";
 
 const Index = () => {
-  const { theme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const relatedWorkouts = [
     { name: "Front Squat", image: squatWorkout },
     { name: "Anderson Squat", image: squatWorkout }
@@ -52,19 +52,24 @@ const Index = () => {
               
               {/* Mobile Info Cards */}
               <div className="lg:hidden space-y-4">
-                <div className="flex items-center gap-3 flex-wrap">
-                  <div className="bg-primary rounded-2xl px-4 py-2">
-                    <span className="text-white font-normal">Equipment: Barbell, Rack</span>
-                  </div>
-                  <button className="glass rounded-2xl px-4 py-2 flex items-center gap-2 hover:bg-background/60 transition-smooth">
-                    <Bookmark size={18} className="text-foreground" />
-                    <span className="text-sm font-medium text-foreground">Save</span>
-                  </button>
-                  <button className="glass rounded-2xl px-4 py-2 flex items-center gap-2 hover:bg-background/60 transition-smooth">
-                    <Share2 size={18} className="text-foreground" />
-                    <span className="text-sm font-medium text-foreground">Share</span>
-                  </button>
+              <div className="flex items-center gap-3 flex-wrap">
+                <div className="bg-primary rounded-2xl px-4 py-2">
+                  <span className="text-white font-normal">Equipment: Barbell, Rack</span>
                 </div>
+                <button className="glass rounded-2xl p-2 flex items-center justify-center hover:bg-background/60 transition-smooth">
+                  <Bookmark size={18} className="text-foreground" />
+                </button>
+                <button className="glass rounded-2xl p-2 flex items-center justify-center hover:bg-background/60 transition-smooth">
+                  <Share2 size={18} className="text-foreground" />
+                </button>
+                <button 
+                  className="glass rounded-2xl p-2 flex items-center justify-center hover:bg-background/60 transition-smooth"
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  aria-label="Toggle theme"
+                >
+                  {theme === "dark" ? <Sun size={18} className="text-foreground" /> : <Moon size={18} className="text-foreground" />}
+                </button>
+              </div>
                 
                 <InfoCard
                   icon={Target}
@@ -109,13 +114,18 @@ const Index = () => {
                 <div className="bg-primary rounded-2xl px-5 py-3">
                   <span className="text-white font-normal">Equipment: Barbell, Rack</span>
                 </div>
-                <button className="glass rounded-2xl px-4 py-2 flex items-center gap-2 hover:bg-background/60 transition-smooth">
+                <button className="glass rounded-2xl p-2 flex items-center justify-center hover:bg-background/60 transition-smooth">
                   <Bookmark size={18} className="text-foreground" />
-                  <span className="text-sm font-medium text-foreground">Save</span>
                 </button>
-                <button className="glass rounded-2xl px-4 py-2 flex items-center gap-2 hover:bg-background/60 transition-smooth">
+                <button className="glass rounded-2xl p-2 flex items-center justify-center hover:bg-background/60 transition-smooth">
                   <Share2 size={18} className="text-foreground" />
-                  <span className="text-sm font-medium text-foreground">Share</span>
+                </button>
+                <button 
+                  className="glass rounded-2xl p-2 flex items-center justify-center hover:bg-background/60 transition-smooth"
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  aria-label="Toggle theme"
+                >
+                  {theme === "dark" ? <Sun size={18} className="text-foreground" /> : <Moon size={18} className="text-foreground" />}
                 </button>
               </div>
               
