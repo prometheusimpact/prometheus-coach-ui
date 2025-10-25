@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { LayoutDashboard, Compass, Bookmark, Users, UserPlus, Calendar, Mail } from "lucide-react";
+import { LayoutDashboard, Compass, Bookmark, Users, UserPlus, Calendar, Mail, Settings } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import logoIcon from "@/assets/logo.png";
 import logoFull from "@/assets/logo-full.png";
 import logoWhite from "@/assets/logo-white.png";
@@ -20,6 +21,7 @@ const navItems: NavItem[] = [
   { icon: UserPlus, label: "Requests" },
   { icon: Calendar, label: "Calendar" },
   { icon: Mail, label: "Inbox" },
+  { icon: Settings, label: "Settings" },
 ];
 
 export const Sidebar = () => {
@@ -85,6 +87,27 @@ export const Sidebar = () => {
           );
         })}
       </nav>
+
+      {/* Profile Section */}
+      <button
+        className="flex items-center gap-3 px-3 py-3 mx-3 mb-3 rounded-xl transition-smooth dark:text-white text-muted-foreground hover:text-foreground hover:bg-secondary"
+        aria-label="My Account"
+      >
+        <Avatar className="w-10 h-10 flex-shrink-0">
+          <AvatarImage src="https://api.dicebear.com/7.x/avataaars/svg?seed=CoachDan" alt="CoachDan" />
+          <AvatarFallback>CD</AvatarFallback>
+        </Avatar>
+        <motion.div
+          animate={{
+            opacity: open ? 1 : 0,
+            display: open ? "flex" : "none",
+          }}
+          className="flex flex-col items-start"
+        >
+          <span className="text-sm font-medium whitespace-nowrap">CoachDan</span>
+          <span className="text-xs text-muted-foreground">My Account</span>
+        </motion.div>
+      </button>
     </motion.aside>
   );
 };

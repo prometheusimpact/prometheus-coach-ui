@@ -1,4 +1,4 @@
-import { LayoutDashboard, Compass, Bookmark, Users, Mail } from "lucide-react";
+import { LayoutDashboard, Compass, Bookmark, Users, Mail, Settings, User } from "lucide-react";
 
 interface NavItem {
   icon: React.ElementType;
@@ -11,7 +11,8 @@ const navItems: NavItem[] = [
   { icon: Compass, label: "Explore" },
   { icon: Bookmark, label: "Saved" },
   { icon: Users, label: "Clients" },
-  { icon: Mail, label: "Inbox" },
+  { icon: Settings, label: "Settings" },
+  { icon: User, label: "Account" },
 ];
 
 export const BottomNav = () => {
