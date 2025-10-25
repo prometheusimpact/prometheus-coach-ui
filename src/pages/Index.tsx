@@ -6,10 +6,14 @@ import { InfoCard } from "@/components/Exercise/InfoCard";
 import { ProgramTile } from "@/components/Exercise/ProgramTile";
 import { Dumbbell, Target, Zap } from "lucide-react";
 import exerciseHero from "@/assets/exercise-hero.jpg";
+import gradientBg from "@/assets/gradient-bg.jpg";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex">
+    <div 
+      className="min-h-screen flex bg-cover bg-center bg-fixed"
+      style={{ backgroundImage: `url(${gradientBg})` }}
+    >
       {/* Desktop Sidebar */}
       <Sidebar />
       
