@@ -75,6 +75,7 @@ const Index = () => {
                   icon={Target}
                   label="Primary Muscle Groups"
                   value="Quadriceps, Glutes, Hamstrings"
+                  variant="accent"
                 />
                 
                 <InfoCard
@@ -88,6 +89,7 @@ const Index = () => {
                       <li>• Drive through heels on ascent</li>
                     </ul>
                   }
+                  variant="accent"
                 />
                 
                 <div>
@@ -113,31 +115,37 @@ const Index = () => {
                           <div>With rest: ~40–60 calories total</div>
                         </div>
                       }
+                      variant="accent"
                     />
                     <InfoCard
                       icon={Weight}
                       label="Total Volume"
                       value="135 lb × ~40 reps = 5,400 lb lifted"
+                      variant="accent"
                     />
                     <InfoCard
                       icon={Clock}
                       label="Time Under Tension"
                       value="~1 min total (3 s eccentric + 1 s concentric per rep)"
+                      variant="accent"
                     />
                     <InfoCard
                       icon={Heart}
                       label="Heart Rate Range"
                       value="~120–150 bpm (moderate intensity)"
+                      variant="accent"
                     />
                     <InfoCard
                       icon={Activity}
                       label="Metabolic Equivalent (MET)"
                       value="~6 METs (strength training, moderate–vigorous)"
+                      variant="accent"
                     />
                     <InfoCard
                       icon={TrendingUp}
                       label="Calories/minute"
                       value="~5–8 cal/min (based on bodyweight)"
+                      variant="accent"
                     />
                   </div>
                 </div>
@@ -190,6 +198,7 @@ const Index = () => {
                     <li>• Drive through heels on ascent</li>
                   </ul>
                 }
+                variant="accent"
               />
               
               <div>
@@ -217,31 +226,37 @@ const Index = () => {
                     <div>With rest: ~40–60 calories total</div>
                   </div>
                 }
+                variant="accent"
               />
               <InfoCard
                 icon={Weight}
                 label="Total Volume"
                 value="135 lb × ~40 reps = 5,400 lb lifted"
+                variant="accent"
               />
               <InfoCard
                 icon={Clock}
                 label="Time Under Tension"
                 value="~1 min total (3 s eccentric + 1 s concentric per rep)"
+                variant="accent"
               />
               <InfoCard
                 icon={Heart}
                 label="Heart Rate Range"
                 value="~120–150 bpm (moderate intensity)"
+                variant="accent"
               />
               <InfoCard
                 icon={Activity}
                 label="Metabolic Equivalent (MET)"
                 value="~6 METs (strength training, moderate–vigorous)"
+                variant="accent"
               />
               <InfoCard
                 icon={TrendingUp}
                 label="Calories/minute"
                 value="~5–8 cal/min (based on bodyweight)"
+                variant="accent"
               />
             </div>
           </div>
