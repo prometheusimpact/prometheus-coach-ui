@@ -1,5 +1,4 @@
 import { Play } from "lucide-react";
-import { StarBorder } from "@/components/ui/star-border";
 
 interface ExerciseHeroProps {
   image: string;
@@ -23,19 +22,13 @@ export const ExerciseHero = ({ image, alt, title }: ExerciseHeroProps) => {
           </h2>
         </div>
       )}
-      <div className="absolute bottom-6 right-6 group">
-        <StarBorder
-          as="button"
-          className="rounded-xl overflow-hidden py-0 hover:scale-105 transition-transform duration-300"
-          color="rgba(255, 255, 255, 0.8)"
-          speed="4s"
-        >
-          <div className="glass px-4 py-3 rounded-xl flex items-center gap-2 text-white">
-            <Play className="w-5 h-5 fill-white" />
-            <span className="font-medium">Play Video</span>
-          </div>
-        </StarBorder>
-      </div>
+      <button 
+        className="absolute bottom-6 right-6 glass glass-hover px-4 py-3 rounded-xl flex items-center gap-2 text-white transition-smooth hover:scale-105"
+        aria-label="Play video"
+      >
+        <Play className="w-5 h-5 fill-white" />
+        <span className="font-medium">Play Video</span>
+      </button>
     </div>
   );
 };
