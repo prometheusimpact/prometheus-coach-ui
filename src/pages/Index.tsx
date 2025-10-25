@@ -103,7 +103,7 @@ const Index = () => {
 
                 {/* Workout Metrics */}
                 <div>
-                  <p className="text-base font-medium text-foreground mb-3">Workout Metrics</p>
+                  <p className="text-base font-medium text-foreground mb-3">Workout Metrics Based on Suggested Program</p>
                   <div className="grid grid-cols-1 gap-3">
                     <InfoCard
                       icon={Flame}
@@ -214,7 +214,7 @@ const Index = () => {
 
           {/* Workout Metrics - Full Width on Desktop */}
           <div className="hidden lg:block mt-8">
-            <p className="text-base font-medium text-foreground mb-4">Workout Metrics</p>
+            <p className="text-base font-medium text-foreground mb-4">Workout Metrics Based on Suggested Program</p>
             <div className="grid grid-cols-3 gap-4">
               <InfoCard
                 icon={Flame}
