@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { LayoutDashboard, Compass, Bookmark, Users, UserPlus, Calendar, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 import logoIcon from "@/assets/logo.png";
 import logoFull from "@/assets/logo-full.png";
+import logoWhite from "@/assets/logo-white.png";
 
 interface NavItem {
   icon: React.ElementType;
@@ -22,6 +24,7 @@ const navItems: NavItem[] = [
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(false);
+  const { theme } = useTheme();
 
   return (
     <motion.aside
@@ -39,7 +42,7 @@ export const Sidebar = () => {
       {/* Logo */}
       <div className="flex items-center px-6 mb-8 overflow-hidden">
         <motion.img
-          src={open ? logoFull : logoIcon}
+          src={theme === "dark" ? logoWhite : (open ? logoFull : logoIcon)}
           alt="Prometheus Coach"
           animate={{
             width: open ? "160px" : "40px",
@@ -63,7 +66,7 @@ export const Sidebar = () => {
                 flex items-center gap-3 px-3 py-3 rounded-xl transition-smooth
                 ${item.active 
                   ? 'bg-primary text-primary-foreground glow-orange' 
-                  : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
+                  : 'dark:text-white text-muted-foreground hover:text-foreground hover:bg-secondary'
                 }
               `}
               aria-label={item.label}

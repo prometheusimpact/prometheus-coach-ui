@@ -27,7 +27,7 @@ export const BottomNav = () => {
                 flex flex-col items-center justify-center gap-1 transition-smooth
                 ${item.active 
                   ? 'text-primary' 
-                  : 'text-muted-foreground'
+                  : 'dark:text-white text-muted-foreground'
                 }
               `}
               aria-label={item.label}
