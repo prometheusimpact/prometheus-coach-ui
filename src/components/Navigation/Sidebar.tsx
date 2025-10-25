@@ -91,7 +91,7 @@ export const Sidebar = () => {
 
       {/* Profile Section */}
       <button
-        className="flex items-center gap-3 px-3 py-3 mx-3 mb-3 rounded-xl transition-smooth dark:text-white text-muted-foreground hover:bg-background/60 glass"
+        className={`flex items-center gap-3 px-3 py-3 mx-3 mb-3 rounded-xl transition-smooth dark:text-white text-muted-foreground ${open ? 'hover:bg-background/60 glass' : ''}`}
         aria-label="My Account"
       >
         <Avatar className="w-10 h-10 flex-shrink-0">
