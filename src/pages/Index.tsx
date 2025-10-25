@@ -4,11 +4,18 @@ import { ExerciseHeader } from "@/components/Exercise/ExerciseHeader";
 import { ExerciseHero } from "@/components/Exercise/ExerciseHero";
 import { InfoCard } from "@/components/Exercise/InfoCard";
 import { ProgramTile } from "@/components/Exercise/ProgramTile";
+import { RelatedWorkouts } from "@/components/Exercise/RelatedWorkouts";
 import { Dumbbell, Target, Zap } from "lucide-react";
 import exerciseHero from "@/assets/exercise-hero.jpg";
 import gradientBg from "@/assets/gradient-bg.jpg";
 
 const Index = () => {
+  const relatedWorkouts = [
+    { name: "Front Squat" },
+    { name: "Anderson Squat" },
+    { name: "Goblet Squat" }
+  ];
+
   return (
     <div 
       className="min-h-screen flex bg-cover bg-center bg-fixed"
@@ -34,6 +41,11 @@ const Index = () => {
                 alt="Athlete performing barbell back squat"
                 title="Barbell Back Squat"
               />
+              
+              {/* Desktop Related Workouts */}
+              <div className="hidden lg:block">
+                <RelatedWorkouts workouts={relatedWorkouts} />
+              </div>
               
               {/* Mobile Info Cards */}
               <div className="lg:hidden space-y-4">
@@ -67,6 +79,11 @@ const Index = () => {
                     <ProgramTile label="Reps" value="8-12" />
                     <ProgramTile label="Weight" value="135 lb" />
                   </div>
+                </div>
+                
+                {/* Mobile Related Workouts */}
+                <div className="lg:hidden">
+                  <RelatedWorkouts workouts={relatedWorkouts} />
                 </div>
               </div>
             </div>
