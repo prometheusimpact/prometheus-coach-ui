@@ -168,22 +168,6 @@ const Dashboard = () => {
 
           {/* Stats Grid */}
           <div className="lg:col-span-2 grid grid-cols-2 gap-4">
-            <InfoCard
-              icon={Users}
-              label="Active Clients"
-              value="24"
-              variant="accent"
-              avatars={[sarahJohnsonImg, jessicaTaylorImg, alexMartinezImg, mikeChenImg]}
-              onClick={() => navigate('/clients')}
-            />
-            <InfoCard
-              icon={Mail}
-              label="Unread Messages"
-              value="3"
-              variant="accent"
-              avatars={[rachelKimImg, sarahJohnsonImg, jessicaTaylorImg]}
-              onClick={() => navigate('/inbox')}
-            />
             <div className="glass rounded-2xl p-5 transition-smooth cursor-pointer hover:shadow-[0_0_50px_rgba(var(--primary-rgb),0.7)] relative group hover:bg-white/70 dark:hover:bg-black/60">
               <div className="flex items-start gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-primary text-primary-foreground">
@@ -203,6 +187,22 @@ const Dashboard = () => {
                 View Calendar
               </ShinyButton>
             </div>
+            <InfoCard
+              icon={Mail}
+              label="Unread Messages"
+              value="3"
+              variant="accent"
+              avatars={[rachelKimImg, sarahJohnsonImg, jessicaTaylorImg]}
+              onClick={() => navigate('/inbox')}
+            />
+            <InfoCard
+              icon={Users}
+              label="Active Clients"
+              value="24"
+              variant="accent"
+              avatars={[sarahJohnsonImg, jessicaTaylorImg, alexMartinezImg, mikeChenImg]}
+              onClick={() => navigate('/clients')}
+            />
             <InfoCard
               icon={Bell}
               label="Pending Requests"
