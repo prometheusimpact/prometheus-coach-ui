@@ -4,19 +4,21 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import gradientBg from "@/assets/gradient-bg.jpg";
 import gradientBgDark from "@/assets/gradient-bg-dark.png";
-import exerciseHero from "@/assets/exercise-hero.jpg";
-import squatWorkout from "@/assets/squat-workout.jpg";
-import frontSquat from "@/assets/front-squat.jpg";
-import gobletSquat from "@/assets/goblet-squat.jpg";
-import andersonSquat from "@/assets/anderson-squat.jpg";
+import diveHero from "@/assets/dive.jpg";
+import legcurlImg from "@/assets/legcurl.jpg";
+import highkneesImg from "@/assets/highknees.jpg";
+import barbellBackImg from "@/assets/barbell-back.jpg";
+import frontSquatImg from "@/assets/front.jpg";
+import gobletSquatImg from "@/assets/goblet.jpg";
+import andersonSquatImg from "@/assets/anderson.jpg";
 
 const exercises = [
-  { name: "Leg Curl Machine - Lying", category: "bodybuilding", image: squatWorkout },
-  { name: "Walking High Knees", category: "crossfit", image: frontSquat },
-  { name: "Barbell Back Squat", category: "powerlifting", image: gobletSquat },
-  { name: "Front Squat", category: "weightlifting", image: andersonSquat },
-  { name: "Goblet Squat", category: "functional", image: squatWorkout },
-  { name: "Anderson Squat", category: "powerlifting", image: frontSquat },
+  { name: "Leg Curl Machine - Lying", category: "bodybuilding", image: legcurlImg },
+  { name: "Walking High Knees", category: "crossfit", image: highkneesImg },
+  { name: "Barbell Back Squat", category: "powerlifting", image: barbellBackImg },
+  { name: "Front Squat", category: "weightlifting", image: frontSquatImg },
+  { name: "Goblet Squat", category: "functional", image: gobletSquatImg },
+  { name: "Anderson Squat", category: "powerlifting", image: andersonSquatImg },
 ];
 
 const Explore = () => {
@@ -39,7 +41,7 @@ const Explore = () => {
           {/* Banner Section with Theme Toggle */}
           <div className="relative w-full h-48 lg:h-56 rounded-3xl overflow-hidden mb-8">
             <img 
-              src={exerciseHero}
+              src={diveHero}
               alt="Explore exercises"
               className="w-full h-full object-cover"
             />
