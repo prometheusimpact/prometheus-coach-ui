@@ -187,7 +187,7 @@ const Dashboard = () => {
                   <img 
                     src={legcurlImg} 
                     alt="Leg Curl Machine - Lying"
-                    className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:grayscale group-hover:scale-125"
                   />
                   <div className="absolute top-3 left-3">
                     <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold">
@@ -205,7 +205,7 @@ const Dashboard = () => {
                   <img 
                     src={highkneesImg} 
                     alt="Walking High Knees"
-                    className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:grayscale group-hover:scale-125"
                   />
                   <div className="absolute top-3 left-3">
                     <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold">
