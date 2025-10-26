@@ -63,7 +63,7 @@ const Explore = () => {
             {exercises.map((exercise, index) => (
               <div
                 key={index}
-                className="glass rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:translate-y-[-4px] hover:shadow-[0_0_20px_rgba(251,146,60,0.4)] dark:hover:bg-white/5 hover:bg-black/5"
+                className="glass rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-[0_0_20px_rgba(251,146,60,0.4)] hover:bg-white/20 dark:hover:bg-black/30"
               >
                 <div className="relative h-48 overflow-hidden">
                   <img 
