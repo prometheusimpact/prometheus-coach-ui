@@ -77,10 +77,10 @@ const Dashboard = () => {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8 gap-4">
           <div>
-            <h1 className="text-3xl lg:text-4xl font-arimo font-bold mb-2 text-black dark:text-[hsl(24,100%,50%)]">
+            <h1 className="text-3xl lg:text-4xl font-arimo font-bold mb-2 text-black dark:text-[hsl(24,100%,50%)] uppercase">
               {getGreeting()} Dan!
             </h1>
-            <p className="text-muted-foreground">Ready to elevate your athletes today?</p>
+            <p className="text-white">Ready to elevate your athletes today?</p>
           </div>
           
           <div className="flex items-center gap-4">
