@@ -103,8 +103,8 @@ const Dashboard = () => {
             
             <div className="glass rounded-2xl px-6 py-3 hidden lg:block">
               <div className="text-right">
-                <p className="text-2xl font-bold">{formatTime(currentTime)}</p>
-                <p className="text-sm text-primary">{formatDate(currentTime)}</p>
+                <p className="text-4xl font-bold">{formatTime(currentTime)}</p>
+                <p className="text-lg text-primary">{formatDate(currentTime)}</p>
               </div>
             </div>
           </div>
@@ -113,8 +113,8 @@ const Dashboard = () => {
         {/* Mobile Time Display */}
         <div className="glass rounded-2xl p-4 mb-6 lg:hidden">
           <div className="text-center">
-            <p className="text-2xl font-bold">{formatTime(currentTime)}</p>
-            <p className="text-sm text-primary">{formatDate(currentTime)}</p>
+            <p className="text-3xl font-bold">{formatTime(currentTime)}</p>
+            <p className="text-base text-primary">{formatDate(currentTime)}</p>
           </div>
         </div>
 
@@ -141,8 +141,8 @@ const Dashboard = () => {
               ))}
             </div>
             
-            <ShinyButton className="w-full">
-              Click to Expand Calendar →
+            <ShinyButton className="w-full font-poppins">
+              View Calendar
             </ShinyButton>
           </div>
 

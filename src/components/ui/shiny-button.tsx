@@ -1,28 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
-
-const animationProps = {
-  initial: { "--x": "100%", scale: 0.8 } as any,
-  animate: { "--x": "-100%", scale: 1 } as any,
-  whileTap: { scale: 0.95 },
-  transition: {
-    repeat: Infinity,
-    repeatType: "loop" as const,
-    repeatDelay: 1,
-    type: "spring" as const,
-    stiffness: 20,
-    damping: 15,
-    mass: 2,
-    scale: {
-      type: "spring" as const,
-      stiffness: 200,
-      damping: 5,
-      mass: 0.5,
-    },
-  },
-};
 
 interface ShinyButtonProps {
   children: React.ReactNode;
@@ -35,10 +14,34 @@ export const ShinyButton: React.FC<ShinyButtonProps> = ({
   className,
   onClick,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const animationProps = {
+    initial: { "--x": "100%", scale: 1 } as any,
+    animate: isHovered ? { "--x": "-100%", scale: 1 } as any : { "--x": "100%", scale: 1 } as any,
+    whileTap: { scale: 0.95 },
+    transition: {
+      "--x": {
+        repeat: isHovered ? Infinity : 0,
+        repeatType: "loop" as const,
+        repeatDelay: 1,
+        duration: 1,
+      },
+      scale: {
+        type: "spring" as const,
+        stiffness: 200,
+        damping: 5,
+        mass: 0.5,
+      },
+    },
+  };
+
   return (
     <motion.button
       {...animationProps}
       onClick={onClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className={cn(
         "relative rounded-lg px-6 py-2 font-medium backdrop-blur-xl transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_hsl(var(--primary)/10%)]",
         className
