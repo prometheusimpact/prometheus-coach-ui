@@ -44,7 +44,7 @@ const Explore = () => {
             <img 
               src={bannerImg}
               alt="Explore exercises"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain lg:object-cover"
             />
             {/* Theme Toggle - Overlapping Image */}
             <button
