@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { toast } from "sonner";
+import gradientBg from "@/assets/gradient-bg.jpg";
+import gradientBgDark from "@/assets/gradient-bg-dark.png";
 
 import alexMartinezImg from "@/assets/alex-martinez.jpg";
 import chrisAndersonImg from "@/assets/chris-anderson.jpg";
@@ -45,7 +47,15 @@ const Requests = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div 
+      className="min-h-screen"
+      style={{
+        backgroundImage: `url(${theme === "dark" ? gradientBgDark : gradientBg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
       {/* Header */}
       <header className="glass sticky top-0 z-50 border-b border-white/10">
         <div className="container mx-auto px-4 py-4">
