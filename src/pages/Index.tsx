@@ -48,7 +48,7 @@ const Index = () => {
               </div>
               
               {/* Desktop Related Workouts */}
-              <div className="hidden lg:block">
+              <div className="hidden lg:block lg:mt-6">
                 <RelatedWorkouts workouts={relatedWorkouts} />
               </div>
               
