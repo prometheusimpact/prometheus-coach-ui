@@ -17,8 +17,6 @@ const exercises = [
   { name: "Front Squat", category: "weightlifting", image: andersonSquat },
   { name: "Goblet Squat", category: "functional", image: squatWorkout },
   { name: "Anderson Squat", category: "powerlifting", image: frontSquat },
-  { name: "Box Squat", category: "crossfit", image: gobletSquat },
-  { name: "Bulgarian Split Squat", category: "bodybuilding", image: andersonSquat },
 ];
 
 const Explore = () => {
@@ -68,13 +66,13 @@ const Explore = () => {
           </div>
 
           {/* Exercise Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {exercises.map((exercise, index) => (
               <div
                 key={index}
                 className="glass rounded-2xl overflow-hidden group cursor-pointer transition-smooth glass-hover"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-56 lg:h-64 overflow-hidden">
                   <img 
                     src={exercise.image}
                     alt={exercise.name}
