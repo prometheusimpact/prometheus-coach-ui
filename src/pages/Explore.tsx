@@ -1,10 +1,11 @@
 import { Sidebar } from "@/components/Navigation/Sidebar";
 import { BottomNav } from "@/components/Navigation/BottomNav";
+import { Link } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import gradientBg from "@/assets/gradient-bg.jpg";
 import gradientBgDark from "@/assets/gradient-bg-dark.png";
-import bannerImg from "@/assets/20percent.png";
+import bannerImg from "@/assets/motion.png";
 import legcurlImg from "@/assets/legcurl.jpg";
 import highkneesImg from "@/assets/highknees.jpg";
 import barbellBackImg from "@/assets/barbell-back.jpg";
@@ -61,8 +62,9 @@ const Explore = () => {
           {/* Exercise Grid */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {exercises.map((exercise, index) => (
-              <div
+              <Link
                 key={index}
+                to="/barbell-back-squat"
                 className="glass rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-[0_0_20px_rgba(251,146,60,0.4)] hover:bg-white/20 dark:hover:bg-black/30"
               >
                 <div className="relative h-48 overflow-hidden">
@@ -80,7 +82,7 @@ const Explore = () => {
                 <div className="p-4">
                   <h3 className="font-bold text-lg">{exercise.name}</h3>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
