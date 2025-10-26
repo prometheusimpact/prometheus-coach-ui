@@ -11,7 +11,9 @@ import barbellBackImg from "@/assets/barbell-back.jpg";
 import frontSquatImg from "@/assets/front.jpg";
 import gobletSquatImg from "@/assets/goblet.jpg";
 import andersonSquatImg from "@/assets/anderson.jpg";
-import diveImg from "@/assets/dive.jpg";
+import boxImg from "@/assets/box.jpg";
+import bulgarianImg from "@/assets/bulgarian.jpg";
+import deadliftImg from "@/assets/deadlift.jpg";
 
 const exercises = [
   { name: "Leg Curl Machine - Lying", category: "bodybuilding", image: legcurlImg },
@@ -20,9 +22,9 @@ const exercises = [
   { name: "Front Squat", category: "weightlifting", image: frontSquatImg },
   { name: "Goblet Squat", category: "functional", image: gobletSquatImg },
   { name: "Anderson Squat", category: "powerlifting", image: andersonSquatImg },
-  { name: "Box Jump", category: "plyometrics", image: diveImg },
-  { name: "Bulgarian Split Squat", category: "functional", image: gobletSquatImg },
-  { name: "Romanian Deadlift", category: "powerlifting", image: barbellBackImg },
+  { name: "Box Jump", category: "plyometrics", image: boxImg },
+  { name: "Bulgarian Split Squat", category: "functional", image: bulgarianImg },
+  { name: "Romanian Deadlift", category: "powerlifting", image: deadliftImg },
 ];
 
 const Saved = () => {
