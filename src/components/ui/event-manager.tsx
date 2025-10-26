@@ -632,7 +632,7 @@ export function EventManager({
           {selectedColors.map((colorValue) => {
             const color = getColorClasses(colorValue)
             return (
-              <Badge key={colorValue} variant="secondary" className="gap-1">
+              <Badge key={colorValue} variant="secondary" className="gap-1 text-white dark:text-foreground">
                 <div className={cn("h-2 w-2 rounded-full", color.bg)} />
                 {color.name}
                 <button
@@ -645,7 +645,7 @@ export function EventManager({
             )
           })}
           {selectedTags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="gap-1">
+            <Badge key={tag} variant="secondary" className="gap-1 text-white dark:text-foreground">
               {tag}
               <button
                 onClick={() => setSelectedTags((prev) => prev.filter((t) => t !== tag))}
@@ -656,7 +656,7 @@ export function EventManager({
             </Badge>
           ))}
           {selectedCategories.map((category) => (
-            <Badge key={category} variant="secondary" className="gap-1">
+            <Badge key={category} variant="secondary" className="gap-1 text-white dark:text-foreground">
               {category}
               <button
                 onClick={() => setSelectedCategories((prev) => prev.filter((c) => c !== category))}
@@ -999,12 +999,12 @@ function EventCard({
                 </div>
                 <div className="flex flex-wrap gap-1">
                   {event.category && (
-                    <Badge variant="secondary" className="text-[10px] h-5">
+                    <Badge variant="secondary" className="text-[10px] h-5 text-white dark:text-foreground">
                       {event.category}
                     </Badge>
                   )}
                   {event.tags?.map((tag) => (
-                    <Badge key={tag} variant="outline" className="text-[10px] h-5">
+                    <Badge key={tag} variant="outline" className="text-[10px] h-5 text-white dark:text-foreground">
                       {tag}
                     </Badge>
                   ))}
@@ -1042,12 +1042,12 @@ function EventCard({
         {isHovered && (
           <div className="mt-2 flex flex-wrap gap-1 animate-in fade-in slide-in-from-bottom-1 duration-200">
             {event.category && (
-              <Badge variant="secondary" className="text-xs">
+              <Badge variant="secondary" className="text-xs text-white dark:text-foreground">
                 {event.category}
               </Badge>
             )}
             {event.tags?.map((tag) => (
-              <Badge key={tag} variant="outline" className="text-xs">
+              <Badge key={tag} variant="outline" className="text-xs text-white dark:text-foreground">
                 {tag}
               </Badge>
             ))}
@@ -1096,12 +1096,12 @@ function EventCard({
                 </div>
                 <div className="flex flex-wrap gap-1">
                   {event.category && (
-                    <Badge variant="secondary" className="text-xs">
+                    <Badge variant="secondary" className="text-xs text-white dark:text-foreground">
                       {event.category}
                     </Badge>
                   )}
                   {event.tags?.map((tag) => (
-                    <Badge key={tag} variant="outline" className="text-xs">
+                    <Badge key={tag} variant="outline" className="text-xs text-white dark:text-foreground">
                       {tag}
                     </Badge>
                   ))}
@@ -1469,7 +1469,7 @@ function ListView({
                           {event.tags && event.tags.length > 0 && (
                             <div className="flex flex-wrap gap-1">
                               {event.tags.map((tag) => (
-                                <Badge key={tag} variant="outline" className="text-[10px] h-4 sm:text-xs sm:h-5">
+                                <Badge key={tag} variant="outline" className="text-[10px] h-4 sm:text-xs sm:h-5 text-white dark:text-foreground">
                                   {tag}
                                 </Badge>
                               ))}
