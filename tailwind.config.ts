@@ -17,7 +17,6 @@ export default {
         sans: ['Poppins', 'sans-serif'],
         heading: ['Space Grotesk', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
-        arimo: ['Arimo', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
