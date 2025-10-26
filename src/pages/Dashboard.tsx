@@ -173,7 +173,7 @@ const Dashboard = () => {
               label="Pending Requests"
               value="7"
               variant="accent"
-              avatars={[alexMartinezImg, mikeChenImg, rachelKimImg]}
+              avatars={[alexMartinezImg, mikeChenImg, rachelKimImg, sarahJohnsonImg]}
             />
             <InfoCard
               icon={TrendingUp}

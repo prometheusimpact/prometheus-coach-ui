@@ -35,7 +35,7 @@ export const InfoCard = ({ icon: Icon, label, value, variant = "default", avatar
               key={index}
               src={avatar}
               alt={`Avatar ${index + 1}`}
-              className="w-8 h-8 rounded-full border-2 border-background object-cover"
+              className="w-8 h-8 rounded-full border-2 border-white/40 object-cover"
               style={{ marginLeft: index > 0 ? '-10px' : '0' }}
             />
           ))}
