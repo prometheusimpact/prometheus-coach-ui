@@ -32,6 +32,7 @@ const Dashboard = () => {
     { time: "9:00 AM", title: "Client Session - John D." },
     { time: "11:30 AM", title: "Team Meeting" },
     { time: "2:00 PM", title: "Client Session - Sarah M." },
+    { time: "4:00 PM", title: "Client Session - Jessica T." },
   ];
 
   const goals = [
@@ -140,13 +141,16 @@ const Dashboard = () => {
             
             <div className="space-y-4 mb-4">
               {scheduleItems.map((item, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 rounded-xl bg-background/50">
+                <div key={index} className="flex items-start gap-3 p-3 rounded-xl bg-background/50 dark:border dark:border-primary">
                   <span className="text-primary font-semibold text-sm whitespace-nowrap">{item.time}</span>
                   <span className="text-foreground text-sm">{item.title}</span>
                 </div>
               ))}
             </div>
             
+            <ShinyButton className="w-full font-poppins dark:border dark:border-primary">
+              View Calendar
+            </ShinyButton>
           </div>
 
           {/* Stats Grid */}
@@ -177,18 +181,7 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center justify-end mb-4">
-                {[jessicaTaylorImg, rachelKimImg, alexMartinezImg, mikeChenImg].map((avatar, index) => (
-                  <img
-                    key={index}
-                    src={avatar}
-                    alt={`Avatar ${index + 1}`}
-                    className="w-8 h-8 rounded-full border-2 border-white/40 object-cover"
-                    style={{ marginLeft: index > 0 ? '-10px' : '0' }}
-                  />
-                ))}
-              </div>
-              <ShinyButton className="w-full font-poppins">
+              <ShinyButton className="w-full font-poppins dark:border dark:border-primary">
                 View Calendar
               </ShinyButton>
             </div>
