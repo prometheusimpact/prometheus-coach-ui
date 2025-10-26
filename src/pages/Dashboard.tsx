@@ -8,7 +8,7 @@ import gradientBg from "@/assets/gradient-bg.jpg";
 import gradientBgDark from "@/assets/gradient-bg-dark.png";
 import exerciseImage from "@/assets/squat-workout.jpg";
 import { Button } from "@/components/ui/button";
-import { GlassmorphismButton } from "@/components/ui/glassmorphism-button";
+import { ShinyButton } from "@/components/ui/shiny-button";
 
 const Dashboard = () => {
   const { theme, setTheme } = useTheme();
@@ -141,9 +141,9 @@ const Dashboard = () => {
               ))}
             </div>
             
-            <GlassmorphismButton className="w-full">
-              Click to expand calendar →
-            </GlassmorphismButton>
+            <ShinyButton className="w-full">
+              Click to Expand Calendar →
+            </ShinyButton>
           </div>
 
           {/* Stats Grid */}
