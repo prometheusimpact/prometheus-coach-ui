@@ -25,7 +25,7 @@ export const InfoCard = ({ icon: Icon, label, value, variant = "default", avatar
           </div>
         )}
         <div className="flex-1">
-          <p className="text-xl font-medium text-foreground dark:text-primary mb-2">{label}</p>
+          <p className="text-xl font-medium text-foreground dark:text-primary mb-2 dark:group-hover:text-white transition-smooth">{label}</p>
           <div className="text-3xl lg:text-4xl font-bold text-foreground group-hover:text-primary transition-smooth">
             {value}
           </div>
