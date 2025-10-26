@@ -156,7 +156,7 @@ const Dashboard = () => {
               </div>
             </div>
             
-            <div className="space-y-4 mb-4">
+            <div className="space-y-4">
               {scheduleItems.map((item, index) => (
                 <div key={index} className="flex items-start gap-3 p-3 rounded-xl bg-background/50 dark:border dark:border-primary">
                   <span className="text-primary font-semibold text-sm whitespace-nowrap">{item.time}</span>
@@ -164,10 +164,6 @@ const Dashboard = () => {
                 </div>
               ))}
             </div>
-            
-            <ShinyButton className="w-full font-poppins dark:border dark:border-primary">
-              View Calendar
-            </ShinyButton>
           </div>
 
           {/* Stats Grid */}
