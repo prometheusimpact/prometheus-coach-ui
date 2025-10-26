@@ -2,6 +2,7 @@ import { useState } from "react";
 import { LayoutDashboard, Compass, Bookmark, Users, UserPlus, Calendar, Mail, Settings } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
+import { Link, useLocation } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import logoIcon from "@/assets/logo.png";
 import logoFull from "@/assets/logo-full.png";
@@ -11,23 +12,24 @@ import profileImage from "@/assets/profile-coachdan.png";
 interface NavItem {
   icon: React.ElementType;
   label: string;
-  active?: boolean;
+  path: string;
 }
 
 const navItems: NavItem[] = [
-  { icon: LayoutDashboard, label: "Dashboard", active: true },
-  { icon: Compass, label: "Explore" },
-  { icon: Bookmark, label: "Saved" },
-  { icon: Users, label: "Clients" },
-  { icon: Calendar, label: "Calendar" },
-  { icon: UserPlus, label: "Requests" },
-  { icon: Settings, label: "Settings" },
-  { icon: Mail, label: "Inbox" },
+  { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
+  { icon: Compass, label: "Explore", path: "/explore" },
+  { icon: Bookmark, label: "Saved", path: "/saved" },
+  { icon: Users, label: "Clients", path: "/clients" },
+  { icon: Calendar, label: "Calendar", path: "/calendar" },
+  { icon: UserPlus, label: "Requests", path: "/requests" },
+  { icon: Settings, label: "Settings", path: "/settings" },
+  { icon: Mail, label: "Inbox", path: "/inbox" },
 ];
 
 export const Sidebar = () => {
   const [open, setOpen] = useState(false);
   const { theme } = useTheme();
+  const location = useLocation();
 
   return (
     <motion.aside
@@ -62,12 +64,14 @@ export const Sidebar = () => {
       <nav className="flex flex-col gap-2 flex-1 px-3">
         {navItems.map((item) => {
           const Icon = item.icon;
+          const isActive = location.pathname === item.path;
           return (
-            <button
+            <Link
               key={item.label}
+              to={item.path}
               className={`
                 flex items-center gap-3 px-3 py-3 rounded-xl transition-smooth
-                ${item.active 
+                ${isActive 
                   ? 'bg-primary text-primary-foreground glow-orange' 
                   : 'dark:text-white text-muted-foreground dark:hover:bg-background/60 hover:text-black hover:bg-white/50 hover:text-base hover:glow-orange'
                 }
@@ -84,7 +88,7 @@ export const Sidebar = () => {
               >
                 {item.label}
               </motion.span>
-            </button>
+            </Link>
           );
         })}
       </nav>
