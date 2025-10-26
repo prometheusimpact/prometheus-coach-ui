@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { toast } from "sonner";
+import { BottomNav } from "@/components/Navigation/BottomNav";
 import gradientBg from "@/assets/gradient-bg.jpg";
 import gradientBgDark from "@/assets/gradient-bg-dark.png";
 
@@ -56,6 +57,8 @@ const Requests = () => {
         backgroundAttachment: "fixed",
       }}
     >
+      <BottomNav />
+      
       {/* Header */}
       <header className="glass sticky top-0 z-50 border-b border-white/10">
         <div className="container mx-auto px-4 py-4">
@@ -88,7 +91,7 @@ const Requests = () => {
       </header>
 
       {/* Content */}
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 pb-24">
         <div className="max-w-2xl mx-auto space-y-4">
           {requests.length === 0 ? (
             <div className="glass rounded-2xl p-8 text-center">
