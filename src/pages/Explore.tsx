@@ -72,7 +72,7 @@ const Explore = () => {
                 key={index}
                 className="glass rounded-2xl overflow-hidden group cursor-pointer transition-smooth glass-hover"
               >
-                <div className="relative h-56 lg:h-64 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                   <img 
                     src={exercise.image}
                     alt={exercise.name}
