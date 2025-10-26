@@ -80,7 +80,7 @@ const Dashboard = () => {
             <h1 className="text-3xl lg:text-4xl font-bold mb-2">
               {getGreeting()}, <span className="text-black dark:text-black">Dan</span>
             </h1>
-            <p className="text-muted-foreground">Ready to elevate your athletes today?</p>
+            <p className="text-muted-foreground text-lg">Ready to elevate your athletes today?</p>
           </div>
           
           <div className="flex items-center gap-4">
