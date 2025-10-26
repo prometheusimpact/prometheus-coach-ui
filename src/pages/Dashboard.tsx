@@ -6,7 +6,8 @@ import { InfoCard } from "@/components/Exercise/InfoCard";
 import { useTheme } from "next-themes";
 import gradientBg from "@/assets/gradient-bg.jpg";
 import gradientBgDark from "@/assets/gradient-bg-dark.png";
-import exerciseImage from "@/assets/squat-workout.jpg";
+import legcurlImg from "@/assets/legcurl.jpg";
+import highkneesImg from "@/assets/highknees.jpg";
 import { Button } from "@/components/ui/button";
 import { ShinyButton } from "@/components/ui/shiny-button";
 
@@ -184,7 +185,7 @@ const Dashboard = () => {
               <div className="glass rounded-2xl overflow-hidden group cursor-pointer transition-smooth glass-hover">
                 <div className="relative h-48 overflow-hidden">
                   <img 
-                    src={exerciseImage} 
+                    src={legcurlImg} 
                     alt="Leg Curl Machine - Lying"
                     className="w-full h-full object-cover transition-transform group-hover:scale-105"
                   />
@@ -202,7 +203,7 @@ const Dashboard = () => {
               <div className="glass rounded-2xl overflow-hidden group cursor-pointer transition-smooth glass-hover">
                 <div className="relative h-48 overflow-hidden">
                   <img 
-                    src={exerciseImage} 
+                    src={highkneesImg} 
                     alt="Walking High Knees"
                     className="w-full h-full object-cover transition-transform group-hover:scale-105"
                   />

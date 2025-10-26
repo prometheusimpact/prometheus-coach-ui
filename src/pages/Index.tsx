@@ -10,13 +10,14 @@ import { useTheme } from "next-themes";
 import exerciseHero from "@/assets/exercise-hero.jpg";
 import gradientBg from "@/assets/gradient-bg.jpg";
 import gradientBgDark from "@/assets/gradient-bg-dark.png";
-import squatWorkout from "@/assets/squat-workout.jpg";
+import frontSquatImg from "@/assets/front.jpg";
+import andersonSquatImg from "@/assets/anderson.jpg";
 
 const Index = () => {
   const { theme, setTheme } = useTheme();
   const relatedWorkouts = [
-    { name: "Front Squat", image: squatWorkout },
-    { name: "Anderson Squat", image: squatWorkout }
+    { name: "Front Squat", image: frontSquatImg },
+    { name: "Anderson Squat", image: andersonSquatImg }
   ];
 
   return (
