@@ -140,9 +140,9 @@ const Dashboard = () => {
               ))}
             </div>
             
-            <button className="w-full text-center text-sm text-muted-foreground hover:text-primary transition-smooth">
+            <Button variant="outline" className="w-full">
               Click to expand calendar →
-            </button>
+            </Button>
           </div>
 
           {/* Stats Grid */}
