@@ -101,7 +101,7 @@ const Dashboard = () => {
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8 gap-4">
           <div>
             <h1 className="text-3xl lg:text-4xl font-bold mb-2">
-              {getGreeting()}, <span className="text-black dark:text-black">Dan</span>
+              {getGreeting()}, <span className="text-black dark:text-white">Dan</span>
             </h1>
             <p className="text-muted-foreground text-lg">Ready to elevate your athletes today?</p>
           </div>
@@ -184,7 +184,7 @@ const Dashboard = () => {
               avatars={[rachelKimImg, sarahJohnsonImg, jessicaTaylorImg]}
               onClick={() => navigate('/inbox')}
             />
-            <div className="glass rounded-2xl p-5 transition-smooth cursor-pointer hover:shadow-[0_0_50px_rgba(var(--primary-rgb),0.7)] relative group hover:bg-white/90 dark:hover:bg-black/60">
+            <div className="glass rounded-2xl p-5 transition-smooth cursor-pointer hover:shadow-[0_0_50px_rgba(var(--primary-rgb),0.7)] relative group hover:bg-white/70 dark:hover:bg-black/60">
               <div className="flex items-start gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-primary text-primary-foreground">
                   <TrendingUp className="w-5 h-5" />

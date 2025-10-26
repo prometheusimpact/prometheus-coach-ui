@@ -13,7 +13,7 @@ export const InfoCard = ({ icon: Icon, label, value, variant = "default", avatar
   return (
     <div 
       onClick={onClick}
-      className="glass rounded-2xl p-5 transition-smooth cursor-pointer hover:shadow-[0_0_50px_rgba(var(--primary-rgb),0.7)] relative group hover:bg-white/90 dark:hover:bg-black/60"
+      className="glass rounded-2xl p-5 transition-smooth cursor-pointer hover:shadow-[0_0_50px_rgba(var(--primary-rgb),0.7)] relative group hover:bg-white/70 dark:hover:bg-black/60"
     >
       <div className="flex items-start gap-3">
         {Icon && (
