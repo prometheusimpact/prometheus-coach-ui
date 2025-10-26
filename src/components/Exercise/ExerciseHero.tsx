@@ -12,7 +12,7 @@ export const ExerciseHero = ({ image, alt, title }: ExerciseHeroProps) => {
       <img 
         src={image} 
         alt={alt}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 pt-[10px]"
       />
       <div className="absolute inset-x-0 bottom-0 h-32 backdrop-blur-sm bg-gradient-to-t from-background/20 to-transparent" />
       {title && (
