@@ -10,6 +10,11 @@ import legcurlImg from "@/assets/legcurl.jpg";
 import highkneesImg from "@/assets/highknees.jpg";
 import { Button } from "@/components/ui/button";
 import { ShinyButton } from "@/components/ui/shiny-button";
+import sarahJohnsonImg from "@/assets/sarah-johnson.jpg";
+import jessicaTaylorImg from "@/assets/jessica-taylor.jpg";
+import alexMartinezImg from "@/assets/alex-martinez.jpg";
+import mikeChenImg from "@/assets/mike-chen.jpg";
+import rachelKimImg from "@/assets/rachel-kim.jpg";
 
 const Dashboard = () => {
   const { theme, setTheme } = useTheme();
@@ -154,18 +159,21 @@ const Dashboard = () => {
               label="Active Clients"
               value="24"
               variant="accent"
+              avatars={[sarahJohnsonImg, jessicaTaylorImg, alexMartinezImg, mikeChenImg]}
             />
             <InfoCard
               icon={Mail}
               label="Unread Messages"
               value="3"
               variant="accent"
+              avatars={[rachelKimImg, sarahJohnsonImg, jessicaTaylorImg]}
             />
             <InfoCard
               icon={Bell}
               label="Pending Requests"
               value="7"
               variant="accent"
+              avatars={[alexMartinezImg, mikeChenImg, rachelKimImg]}
             />
             <InfoCard
               icon={TrendingUp}

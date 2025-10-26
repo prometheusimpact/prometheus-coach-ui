@@ -5,11 +5,12 @@ interface InfoCardProps {
   label: string;
   value: string | React.ReactNode;
   variant?: "default" | "accent";
+  avatars?: string[];
 }
 
-export const InfoCard = ({ icon: Icon, label, value, variant = "default" }: InfoCardProps) => {
+export const InfoCard = ({ icon: Icon, label, value, variant = "default", avatars }: InfoCardProps) => {
   return (
-    <div className="glass rounded-2xl p-5 transition-smooth cursor-pointer hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.4)]">
+    <div className="glass rounded-2xl p-5 transition-smooth cursor-pointer hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.4)] relative">
       <div className="flex items-start gap-3">
         {Icon && (
           <div className={`
@@ -26,6 +27,20 @@ export const InfoCard = ({ icon: Icon, label, value, variant = "default" }: Info
           </div>
         </div>
       </div>
+      
+      {avatars && avatars.length > 0 && (
+        <div className="flex items-center mt-4">
+          {avatars.map((avatar, index) => (
+            <img
+              key={index}
+              src={avatar}
+              alt={`Avatar ${index + 1}`}
+              className="w-8 h-8 rounded-full border-2 border-background object-cover"
+              style={{ marginLeft: index > 0 ? '-10px' : '0' }}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
