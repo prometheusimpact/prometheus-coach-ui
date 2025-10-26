@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import Explore from "./pages/Explore";
 import Saved from "./pages/Saved";
+import Calendar from "./pages/Calendar";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/saved" element={<Saved />} />
+          <Route path="/calendar" element={<Calendar />} />
           <Route path="/barbell-back-squat" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

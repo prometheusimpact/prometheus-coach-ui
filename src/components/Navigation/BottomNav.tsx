@@ -1,4 +1,4 @@
-import { LayoutDashboard, Compass, Bookmark, Users, Mail, Settings, User } from "lucide-react";
+import { LayoutDashboard, Compass, Bookmark, Users, Calendar, Mail, Settings, User } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 interface NavItem {
@@ -11,6 +11,7 @@ const navItems: NavItem[] = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
   { icon: Compass, label: "Explore", path: "/explore" },
   { icon: Bookmark, label: "Saved", path: "/saved" },
+  { icon: Calendar, label: "Calendar", path: "/calendar" },
   { icon: Users, label: "Clients", path: "/clients" },
   { icon: Mail, label: "Inbox", path: "/inbox" },
   { icon: Settings, label: "Settings", path: "/settings" },
