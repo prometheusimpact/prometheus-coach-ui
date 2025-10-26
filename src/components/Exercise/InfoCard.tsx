@@ -9,7 +9,7 @@ interface InfoCardProps {
 
 export const InfoCard = ({ icon: Icon, label, value, variant = "default" }: InfoCardProps) => {
   return (
-    <div className="glass rounded-2xl p-6 transition-smooth glass-hover">
+    <div className="glass rounded-2xl p-6 transition-smooth glass-hover cursor-pointer hover:scale-105 hover:shadow-elegant">
       <div className="flex items-start gap-3">
         {Icon && (
           <div className={`

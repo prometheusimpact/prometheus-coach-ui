@@ -76,7 +76,7 @@ const Dashboard = () => {
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8 gap-4">
           <div>
             <h1 className="text-3xl lg:text-4xl font-bold mb-2">
-              {getGreeting()}, <span className="text-primary">Coach</span>
+              {getGreeting()}, <span className="text-primary">CoachDan</span>
             </h1>
             <p className="text-muted-foreground">Ready to elevate your athletes today?</p>
           </div>
@@ -103,7 +103,7 @@ const Dashboard = () => {
             <div className="glass rounded-2xl px-6 py-3 hidden lg:block">
               <div className="text-right">
                 <p className="text-2xl font-bold">{formatTime(currentTime)}</p>
-                <p className="text-sm text-muted-foreground">{formatDate(currentTime)}</p>
+                <p className="text-sm text-primary">{formatDate(currentTime)}</p>
               </div>
             </div>
           </div>
@@ -113,7 +113,7 @@ const Dashboard = () => {
         <div className="glass rounded-2xl p-4 mb-6 lg:hidden">
           <div className="text-center">
             <p className="text-2xl font-bold">{formatTime(currentTime)}</p>
-            <p className="text-sm text-muted-foreground">{formatDate(currentTime)}</p>
+            <p className="text-sm text-primary">{formatDate(currentTime)}</p>
           </div>
         </div>
 
@@ -154,6 +154,12 @@ const Dashboard = () => {
               variant="accent"
             />
             <InfoCard
+              icon={Mail}
+              label="Unread Messages"
+              value="3"
+              variant="accent"
+            />
+            <InfoCard
               icon={Bell}
               label="Pending Requests"
               value="7"
@@ -163,12 +169,6 @@ const Dashboard = () => {
               icon={TrendingUp}
               label="This Week's Sessions"
               value="42"
-              variant="accent"
-            />
-            <InfoCard
-              icon={Mail}
-              label="Unread Messages"
-              value="3"
               variant="accent"
             />
           </div>
