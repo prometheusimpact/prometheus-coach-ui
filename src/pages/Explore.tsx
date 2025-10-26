@@ -2,6 +2,8 @@ import { Sidebar } from "@/components/Navigation/Sidebar";
 import { BottomNav } from "@/components/Navigation/BottomNav";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import gradientBg from "@/assets/gradient-bg.jpg";
+import gradientBgDark from "@/assets/gradient-bg-dark.png";
 import exerciseHero from "@/assets/exercise-hero.jpg";
 import squatWorkout from "@/assets/squat-workout.jpg";
 import frontSquat from "@/assets/front-squat.jpg";
@@ -23,7 +25,15 @@ const Explore = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="min-h-screen flex w-full">
+    <div 
+      className="min-h-screen flex w-full"
+      style={{
+        backgroundImage: `url(${theme === "dark" ? gradientBgDark : gradientBg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
       <Sidebar />
       
       <main className="flex-1 lg:ml-20 pb-20 lg:pb-0">
