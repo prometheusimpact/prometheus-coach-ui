@@ -4,7 +4,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import gradientBg from "@/assets/gradient-bg.jpg";
 import gradientBgDark from "@/assets/gradient-bg-dark.png";
-import bannerImg from "@/assets/banner-use.png";
+import bannerImg from "@/assets/20percent.png";
 import legcurlImg from "@/assets/legcurl.jpg";
 import highkneesImg from "@/assets/highknees.jpg";
 import barbellBackImg from "@/assets/barbell-back.jpg";
@@ -69,7 +69,7 @@ const Explore = () => {
                   <img 
                     src={exercise.image}
                     alt={exercise.name}
-                    className="w-full h-full object-cover transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-125"
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:grayscale group-hover:scale-125"
                   />
                   <div className="absolute top-3 left-3">
                     <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold">
