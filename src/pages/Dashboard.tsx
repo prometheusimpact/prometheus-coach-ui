@@ -180,6 +180,7 @@ const Dashboard = () => {
               label="This Week's Sessions"
               value="42"
               variant="accent"
+              avatars={[jessicaTaylorImg, rachelKimImg, alexMartinezImg, mikeChenImg]}
             />
           </div>
         </div>
