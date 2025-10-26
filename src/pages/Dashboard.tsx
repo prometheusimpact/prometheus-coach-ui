@@ -8,6 +8,7 @@ import gradientBg from "@/assets/gradient-bg.jpg";
 import gradientBgDark from "@/assets/gradient-bg-dark.png";
 import exerciseImage from "@/assets/squat-workout.jpg";
 import { Button } from "@/components/ui/button";
+import { GlassmorphismButton } from "@/components/ui/glassmorphism-button";
 
 const Dashboard = () => {
   const { theme, setTheme } = useTheme();
@@ -140,9 +141,9 @@ const Dashboard = () => {
               ))}
             </div>
             
-            <Button variant="outline" className="w-full">
+            <GlassmorphismButton className="w-full">
               Click to expand calendar →
-            </Button>
+            </GlassmorphismButton>
           </div>
 
           {/* Stats Grid */}
