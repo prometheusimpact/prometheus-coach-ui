@@ -74,7 +74,7 @@ const Index = () => {
                 <InfoCard
                   icon={Target}
                   label="Primary Muscle Groups"
-                  value="Quadriceps, Glutes, Hamstrings"
+                  value={<div className="text-base font-normal">Quadriceps, Glutes, Hamstrings</div>}
                   variant="accent"
                 />
                 
@@ -109,7 +109,7 @@ const Index = () => {
                       icon={Flame}
                       label="Calories Burned"
                       value={
-                        <div className="text-sm space-y-1">
+                        <div className="text-sm font-normal space-y-1">
                           <div>Per set: ~6–8 calories</div>
                           <div>Total (4 sets): ~25–35 calories</div>
                           <div>With rest: ~40–60 calories total</div>
@@ -183,7 +183,7 @@ const Index = () => {
               <InfoCard
                 icon={Target}
                 label="Primary Muscle Groups"
-                value="Quadriceps, Glutes, Hamstrings"
+                value={<div className="text-base font-normal">Quadriceps, Glutes, Hamstrings</div>}
                 variant="accent"
               />
               
@@ -220,7 +220,7 @@ const Index = () => {
                 icon={Flame}
                 label="Calories Burned"
                 value={
-                  <div className="text-sm space-y-1">
+                  <div className="text-sm font-normal space-y-1">
                     <div>Per set: ~6–8 calories</div>
                     <div>Total (4 sets): ~25–35 calories</div>
                     <div>With rest: ~40–60 calories total</div>
