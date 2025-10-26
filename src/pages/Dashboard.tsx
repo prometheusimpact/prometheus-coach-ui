@@ -147,9 +147,6 @@ const Dashboard = () => {
               ))}
             </div>
             
-            <ShinyButton className="w-full font-poppins">
-              View Calendar
-            </ShinyButton>
           </div>
 
           {/* Stats Grid */}
@@ -168,18 +165,39 @@ const Dashboard = () => {
               variant="accent"
               avatars={[rachelKimImg, sarahJohnsonImg, jessicaTaylorImg]}
             />
+            <div className="glass rounded-2xl p-5 transition-smooth cursor-pointer hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.4)] relative">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-primary text-primary-foreground">
+                  <TrendingUp className="w-5 h-5" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-xl font-medium text-foreground dark:text-primary mb-2">This Week's Sessions</p>
+                  <div className="text-3xl lg:text-4xl font-bold text-foreground">
+                    42
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center justify-end mb-4">
+                {[jessicaTaylorImg, rachelKimImg, alexMartinezImg, mikeChenImg].map((avatar, index) => (
+                  <img
+                    key={index}
+                    src={avatar}
+                    alt={`Avatar ${index + 1}`}
+                    className="w-8 h-8 rounded-full border-2 border-white/40 object-cover"
+                    style={{ marginLeft: index > 0 ? '-10px' : '0' }}
+                  />
+                ))}
+              </div>
+              <ShinyButton className="w-full font-poppins">
+                View Calendar
+              </ShinyButton>
+            </div>
             <InfoCard
               icon={Bell}
               label="Pending Requests"
               value="7"
               variant="accent"
               avatars={[alexMartinezImg, mikeChenImg, rachelKimImg, sarahJohnsonImg]}
-            />
-            <InfoCard
-              icon={TrendingUp}
-              label="This Week's Sessions"
-              value="42"
-              variant="accent"
             />
           </div>
         </div>
