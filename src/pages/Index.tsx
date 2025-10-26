@@ -120,31 +120,31 @@ const Index = () => {
                     <InfoCard
                       icon={Weight}
                       label="Total Volume"
-                      value="135 lb × ~40 reps = 5,400 lb lifted"
+                      value={<div className="text-sm font-normal">135 lb × ~40 reps = 5,400 lb lifted</div>}
                       variant="accent"
                     />
                     <InfoCard
                       icon={Clock}
                       label="Time Under Tension"
-                      value="~1 min total (3 s eccentric + 1 s concentric per rep)"
+                      value={<div className="text-sm font-normal">~1 min total (3 s eccentric + 1 s concentric per rep)</div>}
                       variant="accent"
                     />
                     <InfoCard
                       icon={Heart}
                       label="Heart Rate Range"
-                      value="~120–150 bpm (moderate intensity)"
+                      value={<div className="text-sm font-normal">~120–150 bpm (moderate intensity)</div>}
                       variant="accent"
                     />
                     <InfoCard
                       icon={Activity}
                       label="Metabolic Equivalent (MET)"
-                      value="~6 METs (strength training, moderate–vigorous)"
+                      value={<div className="text-sm font-normal">~6 METs (strength training, moderate–vigorous)</div>}
                       variant="accent"
                     />
                     <InfoCard
                       icon={TrendingUp}
                       label="Calories/minute"
-                      value="~5–8 cal/min (based on bodyweight)"
+                      value={<div className="text-sm font-normal">~5–8 cal/min (based on bodyweight)</div>}
                       variant="accent"
                     />
                   </div>
@@ -231,31 +231,31 @@ const Index = () => {
               <InfoCard
                 icon={Weight}
                 label="Total Volume"
-                value="135 lb × ~40 reps = 5,400 lb lifted"
+                value={<div className="text-sm font-normal">135 lb × ~40 reps = 5,400 lb lifted</div>}
                 variant="accent"
               />
               <InfoCard
                 icon={Clock}
                 label="Time Under Tension"
-                value="~1 min total (3 s eccentric + 1 s concentric per rep)"
+                value={<div className="text-sm font-normal">~1 min total (3 s eccentric + 1 s concentric per rep)</div>}
                 variant="accent"
               />
               <InfoCard
                 icon={Heart}
                 label="Heart Rate Range"
-                value="~120–150 bpm (moderate intensity)"
+                value={<div className="text-sm font-normal">~120–150 bpm (moderate intensity)</div>}
                 variant="accent"
               />
               <InfoCard
                 icon={Activity}
                 label="Metabolic Equivalent (MET)"
-                value="~6 METs (strength training, moderate–vigorous)"
+                value={<div className="text-sm font-normal">~6 METs (strength training, moderate–vigorous)</div>}
                 variant="accent"
               />
               <InfoCard
                 icon={TrendingUp}
                 label="Calories/minute"
-                value="~5–8 cal/min (based on bodyweight)"
+                value={<div className="text-sm font-normal">~5–8 cal/min (based on bodyweight)</div>}
                 variant="accent"
               />
             </div>
