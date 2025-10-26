@@ -8,6 +8,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import sarahJohnsonImg from "@/assets/sarah-johnson.jpg";
+import mikeChenImg from "@/assets/mike-chen.jpg";
+import emilyRodriguezImg from "@/assets/emily-rodriguez.jpg";
+import davidParkImg from "@/assets/davidpark.jpg";
+import alexMartinezImg from "@/assets/alex-martinez.jpg";
+import rachelKimImg from "@/assets/rachel-kim.jpg";
+import chrisAndersonImg from "@/assets/chris-anderson.jpg";
 
 interface Message {
   id: string;
@@ -23,7 +30,7 @@ const conversations: Message[] = [
   {
     id: "1",
     name: "Sarah Johnson",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+    avatar: sarahJohnsonImg,
     lastMessage: "See you at the gym tomorrow! 💪",
     timestamp: "2m ago",
     unread: 2,
@@ -32,7 +39,7 @@ const conversations: Message[] = [
   {
     id: "2",
     name: "Mike Chen",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mike",
+    avatar: mikeChenImg,
     lastMessage: "Thanks for the workout tips!",
     timestamp: "15m ago",
     online: true,
@@ -40,7 +47,7 @@ const conversations: Message[] = [
   {
     id: "3",
     name: "Emily Rodriguez",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Emily",
+    avatar: emilyRodriguezImg,
     lastMessage: "Can we reschedule our session?",
     timestamp: "1h ago",
     unread: 1,
@@ -49,7 +56,7 @@ const conversations: Message[] = [
   {
     id: "4",
     name: "David Park",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=David",
+    avatar: davidParkImg,
     lastMessage: "The new program is working great!",
     timestamp: "2h ago",
     online: true,
@@ -66,7 +73,7 @@ const conversations: Message[] = [
   {
     id: "6",
     name: "Alex Martinez",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
+    avatar: alexMartinezImg,
     lastMessage: "Perfect, I'll be there at 6am",
     timestamp: "5h ago",
     online: false,
@@ -74,7 +81,7 @@ const conversations: Message[] = [
   {
     id: "7",
     name: "Rachel Kim",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rachel",
+    avatar: rachelKimImg,
     lastMessage: "Thanks for the nutrition advice!",
     timestamp: "Yesterday",
     online: false,
@@ -82,7 +89,7 @@ const conversations: Message[] = [
   {
     id: "8",
     name: "Chris Anderson",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Chris",
+    avatar: chrisAndersonImg,
     lastMessage: "Looking forward to our next session",
     timestamp: "Yesterday",
     online: true,
