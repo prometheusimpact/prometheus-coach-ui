@@ -54,15 +54,9 @@ const Explore = () => {
           <div className="relative w-full h-48 lg:h-56 rounded-3xl overflow-hidden mb-8">
             <img 
               src={exerciseHero}
-              alt="Explore what drives results"
+              alt="Explore exercises"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/40 to-transparent" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <h1 className="text-white font-heading text-3xl lg:text-5xl font-bold text-center px-4">
-                Explore What Drives Results
-              </h1>
-            </div>
           </div>
 
           {/* Exercise Grid */}
