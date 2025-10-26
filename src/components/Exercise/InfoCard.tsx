@@ -29,7 +29,7 @@ export const InfoCard = ({ icon: Icon, label, value, variant = "default", avatar
       </div>
       
       {avatars && avatars.length > 0 && (
-        <div className="flex items-center mt-4">
+        <div className="flex items-center justify-end mt-4">
           {avatars.map((avatar, index) => (
             <img
               key={index}
