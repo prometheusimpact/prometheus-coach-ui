@@ -4,7 +4,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import gradientBg from "@/assets/gradient-bg.jpg";
 import gradientBgDark from "@/assets/gradient-bg-dark.png";
-import diveHero from "@/assets/dive.jpg";
+import bannerImg from "@/assets/banner-use.png";
 import legcurlImg from "@/assets/legcurl.jpg";
 import highkneesImg from "@/assets/highknees.jpg";
 import barbellBackImg from "@/assets/barbell-back.jpg";
@@ -41,7 +41,7 @@ const Explore = () => {
           {/* Banner Section with Theme Toggle */}
           <div className="relative w-full h-48 lg:h-56 rounded-3xl overflow-hidden mb-8">
             <img 
-              src={diveHero}
+              src={bannerImg}
               alt="Explore exercises"
               className="w-full h-full object-cover"
             />
@@ -69,7 +69,7 @@ const Explore = () => {
                   <img 
                     src={exercise.image}
                     alt={exercise.name}
-                    className="w-full h-full object-cover transition-transform group-hover:scale-105"
+                    className="w-full h-full object-cover transition-all duration-500 grayscale group-hover:grayscale-0 group-hover:scale-125"
                   />
                   <div className="absolute top-3 left-3">
                     <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold">
