@@ -15,6 +15,7 @@ import davidParkImg from "@/assets/davidpark.jpg";
 import alexMartinezImg from "@/assets/alex-martinez.jpg";
 import rachelKimImg from "@/assets/rachel-kim.jpg";
 import chrisAndersonImg from "@/assets/chris-anderson.jpg";
+import jessicaTaylorImg from "@/assets/jessica-taylor.jpg";
 
 interface Message {
   id: string;
@@ -64,7 +65,7 @@ const conversations: Message[] = [
   {
     id: "5",
     name: "Jessica Taylor",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jessica",
+    avatar: jessicaTaylorImg,
     lastMessage: "What time works best for you?",
     timestamp: "3h ago",
     unread: 3,
