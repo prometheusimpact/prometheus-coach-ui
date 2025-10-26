@@ -184,14 +184,14 @@ const Dashboard = () => {
               avatars={[rachelKimImg, sarahJohnsonImg, jessicaTaylorImg]}
               onClick={() => navigate('/inbox')}
             />
-            <div className="glass rounded-2xl p-5 transition-smooth cursor-pointer hover:shadow-[0_0_50px_rgba(var(--primary-rgb),0.7)] relative">
+            <div className="glass rounded-2xl p-5 transition-smooth cursor-pointer hover:shadow-[0_0_50px_rgba(var(--primary-rgb),0.7)] relative group hover:bg-white/90 dark:hover:bg-black/60">
               <div className="flex items-start gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-primary text-primary-foreground">
                   <TrendingUp className="w-5 h-5" />
                 </div>
                 <div className="flex-1">
                   <p className="text-xl font-medium text-foreground dark:text-primary mb-2">This Week's Sessions</p>
-                  <div className="text-3xl lg:text-4xl font-bold text-foreground">
+                  <div className="text-3xl lg:text-4xl font-bold text-foreground group-hover:text-primary transition-smooth">
                     42
                   </div>
                 </div>
