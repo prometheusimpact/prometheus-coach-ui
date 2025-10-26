@@ -4,9 +4,10 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import gradientBg from "@/assets/gradient-bg.jpg";
 import gradientBgDark from "@/assets/gradient-bg-dark.png";
+import { EventManager, type Event } from "@/components/ui/event-manager";
 
 // Demo events with realistic data
-const demoEvents = [
+const demoEvents: Event[] = [
   {
     id: "1",
     title: "Team Standup",
@@ -147,11 +148,16 @@ const Calendar = () => {
             </button>
           </div>
 
-          {/* Calendar Content - EventManager will go here */}
-          <div className="glass rounded-2xl p-6">
-            <p className="text-muted-foreground">Event Manager component will be added here</p>
-            {/* EventManager component will be integrated once provided */}
-          </div>
+          {/* Calendar Content - EventManager */}
+          <EventManager
+            events={demoEvents}
+            onEventCreate={(event) => console.log("Created:", event)}
+            onEventUpdate={(id, event) => console.log("Updated:", id, event)}
+            onEventDelete={(id) => console.log("Deleted:", id)}
+            categories={["Meeting", "Task", "Reminder", "Personal"]}
+            availableTags={["Important", "Urgent", "Work", "Personal", "Team", "Client"]}
+            defaultView="month"
+          />
         </div>
       </main>
 
