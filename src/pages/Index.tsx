@@ -38,7 +38,7 @@ const Index = () => {
           {/* Desktop Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
             {/* Left Column - Exercise Image */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-6 lg:pt-[10px]">
               <ExerciseHero 
                 image={exerciseHero}
                 alt="Athlete performing barbell back squat"
