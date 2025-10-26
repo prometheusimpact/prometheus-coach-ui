@@ -5,7 +5,7 @@ import { ExerciseHero } from "@/components/Exercise/ExerciseHero";
 import { InfoCard } from "@/components/Exercise/InfoCard";
 import { ProgramTile } from "@/components/Exercise/ProgramTile";
 import { RelatedWorkouts } from "@/components/Exercise/RelatedWorkouts";
-import { Dumbbell, Target, Zap, Bookmark, Share2, Moon, Sun, Flame, Weight, Clock, Heart, Activity, TrendingUp } from "lucide-react";
+import { Dumbbell, Target, Zap, Bookmark, Share2, Moon, Sun, Flame, Weight, Clock, Heart, Activity, TrendingUp, AlertTriangle } from "lucide-react";
 import { useTheme } from "next-themes";
 import exerciseHero from "@/assets/exercise-hero.jpg";
 import gradientBg from "@/assets/gradient-bg.jpg";
@@ -102,6 +102,13 @@ const Index = () => {
                     <ProgramTile label="Weight" value="135 lb" />
                   </div>
                 </div>
+
+                <InfoCard
+                  icon={AlertTriangle}
+                  label="Common Mistakes"
+                  value={<div className="text-sm font-normal">Rounded back, shallow depth, knees caving inward, bar placement too high/low.</div>}
+                  variant="accent"
+                />
 
                 {/* Workout Metrics */}
                 <div>
@@ -211,6 +218,13 @@ const Index = () => {
                   <ProgramTile label="Weight" value="135 lb" />
                 </div>
               </div>
+
+              <InfoCard
+                icon={AlertTriangle}
+                label="Common Mistakes"
+                value={<div className="text-sm font-normal">Rounded back, shallow depth, knees caving inward, bar placement too high/low.</div>}
+                variant="accent"
+              />
             </div>
           </div>
 
