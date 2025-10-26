@@ -210,7 +210,7 @@ const Index = () => {
                 variant="accent"
               />
               
-              <div>
+              <div className="lg:mt-[2px]">
                 <p className="text-base font-medium text-foreground mb-4">Suggested Program</p>
                 <div className="grid grid-cols-3 gap-3">
                   <ProgramTile label="Sets" value="4" />
