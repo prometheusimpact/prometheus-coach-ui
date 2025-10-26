@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Sidebar } from "@/components/Navigation/Sidebar";
 import { BottomNav } from "@/components/Navigation/BottomNav";
-import { Calendar, Users, Bell, TrendingUp, Mail, Target, Search, Moon, Sun } from "lucide-react";
+import { Calendar, Users, Bell, TrendingUp, Mail, Target, Search, Moon, Sun, Plus } from "lucide-react";
 import { InfoCard } from "@/components/Exercise/InfoCard";
 import { useTheme } from "next-themes";
+import { useNavigate } from "react-router-dom";
 import gradientBg from "@/assets/gradient-bg.jpg";
 import gradientBgDark from "@/assets/gradient-bg-dark.png";
 import legcurlImg from "@/assets/legcurl.jpg";
@@ -18,6 +19,7 @@ import rachelKimImg from "@/assets/rachel-kim.jpg";
 
 const Dashboard = () => {
   const { theme, setTheme } = useTheme();
+  const navigate = useNavigate();
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -35,12 +37,27 @@ const Dashboard = () => {
     { time: "4:00 PM", title: "Client Session - Jessica T." },
   ];
 
-  const goals = [
+  const [goals, setGoals] = useState([
     { id: 1, text: "Review 3 client progress reports", completed: true },
     { id: 2, text: "Update training programs for Team Alpha", completed: false },
     { id: 3, text: "Follow up with new client onboarding", completed: false },
     { id: 4, text: "Record new exercise demonstration video", completed: false },
-  ];
+  ]);
+
+  const toggleGoal = (goalId: number) => {
+    setGoals(goals.map(goal => 
+      goal.id === goalId ? { ...goal, completed: !goal.completed } : goal
+    ));
+  };
+
+  const addNewGoal = () => {
+    const newGoal = {
+      id: goals.length + 1,
+      text: "New goal",
+      completed: false
+    };
+    setGoals([...goals, newGoal]);
+  };
 
   const formatTime = (date: Date) => {
     return date.toLocaleTimeString('en-US', { 
@@ -161,6 +178,7 @@ const Dashboard = () => {
               value="24"
               variant="accent"
               avatars={[sarahJohnsonImg, jessicaTaylorImg, alexMartinezImg, mikeChenImg]}
+              onClick={() => navigate('/clients')}
             />
             <InfoCard
               icon={Mail}
@@ -168,8 +186,9 @@ const Dashboard = () => {
               value="3"
               variant="accent"
               avatars={[rachelKimImg, sarahJohnsonImg, jessicaTaylorImg]}
+              onClick={() => navigate('/inbox')}
             />
-            <div className="glass rounded-2xl p-5 transition-smooth cursor-pointer hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.4)] relative">
+            <div className="glass rounded-2xl p-5 transition-smooth cursor-pointer hover:shadow-[0_0_50px_rgba(var(--primary-rgb),0.7)] relative">
               <div className="flex items-start gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-primary text-primary-foreground">
                   <TrendingUp className="w-5 h-5" />
@@ -181,7 +200,10 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
-              <ShinyButton className="w-full font-poppins dark:border dark:border-primary">
+              <ShinyButton 
+                className="w-full font-poppins dark:border dark:border-primary"
+                onClick={() => navigate('/calendar')}
+              >
                 View Calendar
               </ShinyButton>
             </div>
@@ -191,6 +213,7 @@ const Dashboard = () => {
               value="7"
               variant="accent"
               avatars={[alexMartinezImg, mikeChenImg, rachelKimImg, sarahJohnsonImg]}
+              onClick={() => navigate('/requests')}
             />
           </div>
         </div>
@@ -248,15 +271,26 @@ const Dashboard = () => {
                 </div>
                 <h2 className="text-xl font-bold">Today's Goals</h2>
               </div>
-              <span className="text-sm text-muted-foreground">
-                {goals.filter(g => g.completed).length} of {goals.length} completed
-              </span>
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-muted-foreground">
+                  {goals.filter(g => g.completed).length} of {goals.length} completed
+                </span>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={addNewGoal}
+                  className="w-8 h-8 rounded-lg bg-primary/10 hover:bg-primary/20"
+                >
+                  <Plus className="w-4 h-4" />
+                </Button>
+              </div>
             </div>
             
             <div className="space-y-3">
               {goals.map((goal) => (
                 <div 
                   key={goal.id} 
+                  onClick={() => toggleGoal(goal.id)}
                   className="flex items-start gap-3 p-3 rounded-xl bg-background/50 cursor-pointer hover:bg-background/70 transition-smooth"
                 >
                   <div className={`

@@ -6,11 +6,15 @@ interface InfoCardProps {
   value: string | React.ReactNode;
   variant?: "default" | "accent";
   avatars?: string[];
+  onClick?: () => void;
 }
 
-export const InfoCard = ({ icon: Icon, label, value, variant = "default", avatars }: InfoCardProps) => {
+export const InfoCard = ({ icon: Icon, label, value, variant = "default", avatars, onClick }: InfoCardProps) => {
   return (
-    <div className="glass rounded-2xl p-5 transition-smooth cursor-pointer hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.4)] relative">
+    <div 
+      onClick={onClick}
+      className="glass rounded-2xl p-5 transition-smooth cursor-pointer hover:shadow-[0_0_50px_rgba(var(--primary-rgb),0.7)] relative"
+    >
       <div className="flex items-start gap-3">
         {Icon && (
           <div className={`
