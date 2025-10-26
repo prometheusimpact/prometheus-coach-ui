@@ -36,11 +36,17 @@ const Explore = () => {
       
       <main className="flex-1 lg:ml-20 pb-20 lg:pb-0">
         <div className="container mx-auto px-4 lg:px-8 py-6 lg:py-10 max-w-7xl">
-          {/* Theme Toggle - Top Right */}
-          <div className="flex justify-end mb-4">
+          {/* Banner Section with Theme Toggle */}
+          <div className="relative w-full h-48 lg:h-56 rounded-3xl overflow-hidden mb-8">
+            <img 
+              src={exerciseHero}
+              alt="Explore exercises"
+              className="w-full h-full object-cover"
+            />
+            {/* Theme Toggle - Overlapping Image */}
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="glass w-10 h-10 rounded-xl flex items-center justify-center transition-smooth hover:bg-primary hover:text-primary-foreground"
+              className="absolute top-4 right-4 glass w-10 h-10 rounded-xl flex items-center justify-center transition-smooth hover:bg-primary hover:text-primary-foreground z-10"
             >
               {theme === "dark" ? (
                 <Sun className="w-5 h-5" />
@@ -48,15 +54,6 @@ const Explore = () => {
                 <Moon className="w-5 h-5" />
               )}
             </button>
-          </div>
-
-          {/* Banner Section */}
-          <div className="relative w-full h-48 lg:h-56 rounded-3xl overflow-hidden mb-8">
-            <img 
-              src={exerciseHero}
-              alt="Explore exercises"
-              className="w-full h-full object-cover"
-            />
           </div>
 
           {/* Exercise Grid */}
