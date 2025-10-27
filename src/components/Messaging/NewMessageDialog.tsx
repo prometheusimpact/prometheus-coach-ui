@@ -127,7 +127,12 @@ export const NewMessageDialog = ({ open, onOpenChange, onConversationSelected }:
             </div>
             <div>
               <DialogTitle className="text-xl text-foreground">New Message</DialogTitle>
-              <DialogDescription className="text-muted-foreground">Select someone to start a conversation</DialogDescription>
+              <DialogDescription className="text-muted-foreground">
+                Select someone to start a conversation
+                {!loading && users.length > 0 && (
+                  <span className="ml-1 text-primary font-semibold">({users.length} {users.length === 1 ? 'user' : 'users'} available)</span>
+                )}
+              </DialogDescription>
             </div>
           </div>
         </DialogHeader>
