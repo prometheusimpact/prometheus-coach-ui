@@ -1,6 +1,6 @@
 import { Sidebar } from "@/components/Navigation/Sidebar";
 import { BottomNav } from "@/components/Navigation/BottomNav";
-import { Moon, Sun, Search, Send, Loader2 } from "lucide-react";
+import { Moon, Sun, Search, Send, Loader2, MessageSquarePlus } from "lucide-react";
 import { useTheme } from "next-themes";
 import gradientBg from "@/assets/gradient-bg.jpg";
 import gradientBgDark from "@/assets/gradient-bg-dark.png";
@@ -8,11 +8,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { useState, useEffect, useRef } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { useConversations } from "@/hooks/useConversations";
 import { useMessages } from "@/hooks/useMessages";
 import { formatDistanceToNow } from "date-fns";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
+import { NewMessageDialog } from "@/components/Messaging/NewMessageDialog";
 
 const Inbox = () => {
   const { theme, setTheme } = useTheme();
@@ -20,9 +22,10 @@ const Inbox = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedConversationId, setSelectedConversationId] = useState<string | null>(null);
   const [messageInput, setMessageInput] = useState("");
+  const [newMessageDialogOpen, setNewMessageDialogOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
-  const { conversations, loading: conversationsLoading } = useConversations();
+  const { conversations, loading: conversationsLoading, refetch: refetchConversations } = useConversations();
   const { messages, loading: messagesLoading, sendMessage } = useMessages(selectedConversationId);
 
   const selectedConversation = conversations.find(c => c.id === selectedConversationId);
@@ -85,16 +88,27 @@ const Inbox = () => {
 
       <main className="flex-1 lg:ml-20 pb-20 lg:pb-0">
         <div className="container mx-auto px-4 lg:px-8 py-6 lg:py-10 max-w-7xl">
-          {/* Header with Title and Theme Toggle */}
+          {/* Header with Title, New Message Button, and Theme Toggle */}
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-3xl lg:text-4xl font-bold">Inbox</h1>
 
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="glass w-10 h-10 rounded-xl flex items-center justify-center transition-smooth hover:bg-primary hover:text-primary-foreground"
-            >
-              {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
+            <div className="flex items-center gap-2">
+              <Button
+                onClick={() => setNewMessageDialogOpen(true)}
+                className="glass-hover transition-smooth hover:bg-primary hover:text-primary-foreground"
+                variant="outline"
+              >
+                <MessageSquarePlus className="w-5 h-5 mr-2" />
+                <span className="hidden sm:inline">New Message</span>
+              </Button>
+              
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="glass w-10 h-10 rounded-xl flex items-center justify-center transition-smooth hover:bg-primary hover:text-primary-foreground"
+              >
+                {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </button>
+            </div>
           </div>
 
           {/* Messenger Interface */}
@@ -265,6 +279,16 @@ const Inbox = () => {
       </main>
 
       <BottomNav />
+
+      {/* New Message Dialog */}
+      <NewMessageDialog
+        open={newMessageDialogOpen}
+        onOpenChange={setNewMessageDialogOpen}
+        onConversationSelected={(conversationId) => {
+          setSelectedConversationId(conversationId);
+          refetchConversations();
+        }}
+      />
     </div>
   );
 };
