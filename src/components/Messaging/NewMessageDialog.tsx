@@ -1,3 +1,4 @@
+// TEMPORARY SECURITY (DEV ONLY): RLS disabled for messaging tables; re-enable before production.
 import { useState } from 'react';
 import {
   Dialog,

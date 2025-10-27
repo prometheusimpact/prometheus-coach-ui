@@ -1,3 +1,5 @@
+// TEMPORARY SECURITY (DEV ONLY): RLS is disabled on conversations, conversation_participants, and messages.
+// Remember to RE-ENABLE RLS and restore least-privilege policies before production.
 import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
