@@ -12,10 +12,21 @@ export const useAvailableUsers = () => {
   const { user, profile } = useAuth();
   const [users, setUsers] = useState<AvailableUser[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchUsers = async () => {
-      if (!user || !profile) return;
+      if (!user || !profile) {
+        setLoading(false);
+        setError(null);
+        return;
+      }
+
+      // Set timeout to prevent infinite loading
+      const timeoutId = setTimeout(() => {
+        setLoading(false);
+        setError('Request timed out. Please try again.');
+      }, 3000);
 
       try {
         // Determine which roles to fetch based on current user's role
@@ -42,6 +53,8 @@ export const useAvailableUsers = () => {
 
         if (!profiles || profiles.length === 0) {
           setUsers([]);
+          setError(null);
+          clearTimeout(timeoutId);
           setLoading(false);
           return;
         }
@@ -73,9 +86,12 @@ export const useAvailableUsers = () => {
         );
 
         setUsers(filteredUsers);
+        setError(null);
       } catch (error) {
         console.error('Error fetching available users:', error);
+        setError('Failed to load users');
       } finally {
+        clearTimeout(timeoutId);
         setLoading(false);
       }
     };
@@ -83,5 +99,5 @@ export const useAvailableUsers = () => {
     fetchUsers();
   }, [user, profile]);
 
-  return { users, loading };
+  return { users, loading, error };
 };

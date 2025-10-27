@@ -22,9 +22,20 @@ export const useConversations = () => {
   const { user } = useAuth();
   const [conversations, setConversations] = useState<ConversationWithDetails[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchConversations = async () => {
-    if (!user) return;
+    if (!user) {
+      setLoading(false);
+      setError(null);
+      return;
+    }
+
+    // Set timeout to prevent infinite loading
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+      setError('Request timed out. Please try again.');
+    }, 3000);
 
     try {
       // Get all conversations where user is a participant
@@ -37,6 +48,8 @@ export const useConversations = () => {
 
       if (!participantData || participantData.length === 0) {
         setConversations([]);
+        setError(null);
+        clearTimeout(timeoutId);
         setLoading(false);
         return;
       }
@@ -97,9 +110,12 @@ export const useConversations = () => {
       );
 
       setConversations(conversationsWithDetails);
+      setError(null);
     } catch (error) {
       console.error('Error fetching conversations:', error);
+      setError('Failed to load conversations');
     } finally {
+      clearTimeout(timeoutId);
       setLoading(false);
     }
   };
@@ -139,5 +155,5 @@ export const useConversations = () => {
     };
   }, [user]);
 
-  return { conversations, loading, refetch: fetchConversations };
+  return { conversations, loading, error, refetch: fetchConversations };
 };

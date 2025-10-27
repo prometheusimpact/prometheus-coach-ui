@@ -25,7 +25,7 @@ const Inbox = () => {
   const [newMessageDialogOpen, setNewMessageDialogOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
-  const { conversations, loading: conversationsLoading, refetch: refetchConversations } = useConversations();
+  const { conversations, loading: conversationsLoading, error: conversationsError, refetch: refetchConversations } = useConversations();
   const { messages, loading: messagesLoading, sendMessage } = useMessages(selectedConversationId);
 
   const selectedConversation = conversations.find(c => c.id === selectedConversationId);
@@ -135,9 +135,32 @@ const Inbox = () => {
                   <div className="flex items-center justify-center h-full">
                     <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
                   </div>
+                ) : conversationsError ? (
+                  <div className="flex items-center justify-center h-full p-8 text-center">
+                    <div>
+                      <p className="text-destructive font-semibold mb-2">Error loading conversations</p>
+                      <p className="text-muted-foreground text-sm mb-4">{conversationsError}</p>
+                      <Button 
+                        onClick={() => refetchConversations()} 
+                        variant="outline"
+                        size="sm"
+                      >
+                        Retry
+                      </Button>
+                    </div>
+                  </div>
                 ) : filteredConversations.length === 0 ? (
                   <div className="flex items-center justify-center h-full p-8 text-center">
-                    <p className="text-muted-foreground">No conversations yet. Start chatting!</p>
+                    <div>
+                      <p className="text-muted-foreground mb-2">
+                        {searchQuery ? `No conversations found matching "${searchQuery}"` : "No conversations yet"}
+                      </p>
+                      {!searchQuery && (
+                        <p className="text-sm text-muted-foreground">
+                          Click <strong>"New Message"</strong> to start chatting
+                        </p>
+                      )}
+                    </div>
                   </div>
                 ) : (
                   filteredConversations.map((conversation) => (

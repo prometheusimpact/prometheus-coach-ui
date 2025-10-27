@@ -23,7 +23,7 @@ interface NewMessageDialogProps {
 
 export const NewMessageDialog = ({ open, onOpenChange, onConversationSelected }: NewMessageDialogProps) => {
   const { user } = useAuth();
-  const { users, loading } = useAvailableUsers();
+  const { users, loading, error } = useAvailableUsers();
   const [searchQuery, setSearchQuery] = useState('');
   const [creating, setCreating] = useState(false);
 
@@ -150,6 +150,11 @@ export const NewMessageDialog = ({ open, onOpenChange, onConversationSelected }:
             {loading ? (
               <div className="flex items-center justify-center py-12">
                 <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+              </div>
+            ) : error ? (
+              <div className="text-center py-12">
+                <p className="text-destructive font-semibold mb-1">Error loading users</p>
+                <p className="text-muted-foreground text-sm">{error}</p>
               </div>
             ) : filteredUsers.length === 0 ? (
               <div className="text-center py-12">
