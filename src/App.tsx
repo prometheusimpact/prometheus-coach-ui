@@ -11,6 +11,7 @@ import Explore from "./pages/Explore";
 import Saved from "./pages/Saved";
 import Calendar from "./pages/Calendar";
 import Inbox from "./pages/Inbox";
+import CopyInbox from "./pages/CopyInbox";
 import Requests from "./pages/Requests";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/saved" element={<ProtectedRoute><Saved /></ProtectedRoute>} />
             <Route path="/calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
             <Route path="/inbox" element={<ProtectedRoute><Inbox /></ProtectedRoute>} />
+            <Route path="/copy-inbox" element={<ProtectedRoute><CopyInbox /></ProtectedRoute>} />
             <Route path="/requests" element={<ProtectedRoute><Requests /></ProtectedRoute>} />
             <Route path="/barbell-back-squat" element={<ProtectedRoute><Index /></ProtectedRoute>} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
