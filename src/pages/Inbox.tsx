@@ -1,110 +1,75 @@
 import { Sidebar } from "@/components/Navigation/Sidebar";
 import { BottomNav } from "@/components/Navigation/BottomNav";
-import { Moon, Sun, Search, MoreVertical, Phone, Video } from "lucide-react";
+import { Moon, Sun, Search, Send, Loader2 } from "lucide-react";
 import { useTheme } from "next-themes";
 import gradientBg from "@/assets/gradient-bg.jpg";
 import gradientBgDark from "@/assets/gradient-bg-dark.png";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Badge } from "@/components/ui/badge";
-import sarahJohnsonImg from "@/assets/sarah-johnson.jpg";
-import mikeChenImg from "@/assets/mike-chen.jpg";
-import emilyRodriguezImg from "@/assets/emily-rodriguez.jpg";
-import davidParkImg from "@/assets/davidpark.jpg";
-import alexMartinezImg from "@/assets/alex-martinez.jpg";
-import rachelKimImg from "@/assets/rachel-kim.jpg";
-import chrisAndersonImg from "@/assets/chris-anderson.jpg";
-import jessicaTaylorImg from "@/assets/jessica-taylor.jpg";
-
-interface Message {
-  id: string;
-  name: string;
-  avatar: string;
-  lastMessage: string;
-  timestamp: string;
-  unread?: number;
-  online?: boolean;
-}
-
-const conversations: Message[] = [
-  {
-    id: "1",
-    name: "Sarah Johnson",
-    avatar: sarahJohnsonImg,
-    lastMessage: "See you at the gym tomorrow! 💪",
-    timestamp: "2m ago",
-    unread: 2,
-    online: true,
-  },
-  {
-    id: "2",
-    name: "Mike Chen",
-    avatar: mikeChenImg,
-    lastMessage: "Thanks for the workout tips!",
-    timestamp: "15m ago",
-    online: true,
-  },
-  {
-    id: "3",
-    name: "Emily Rodriguez",
-    avatar: emilyRodriguezImg,
-    lastMessage: "Can we reschedule our session?",
-    timestamp: "1h ago",
-    unread: 1,
-    online: false,
-  },
-  {
-    id: "4",
-    name: "David Park",
-    avatar: davidParkImg,
-    lastMessage: "The new program is working great!",
-    timestamp: "2h ago",
-    online: true,
-  },
-  {
-    id: "5",
-    name: "Jessica Taylor",
-    avatar: jessicaTaylorImg,
-    lastMessage: "What time works best for you?",
-    timestamp: "3h ago",
-    unread: 3,
-    online: false,
-  },
-  {
-    id: "6",
-    name: "Alex Martinez",
-    avatar: alexMartinezImg,
-    lastMessage: "Perfect, I'll be there at 6am",
-    timestamp: "5h ago",
-    online: false,
-  },
-  {
-    id: "7",
-    name: "Rachel Kim",
-    avatar: rachelKimImg,
-    lastMessage: "Thanks for the nutrition advice!",
-    timestamp: "Yesterday",
-    online: false,
-  },
-  {
-    id: "8",
-    name: "Chris Anderson",
-    avatar: chrisAndersonImg,
-    lastMessage: "Looking forward to our next session",
-    timestamp: "Yesterday",
-    online: true,
-  },
-];
+import { useConversations } from "@/hooks/useConversations";
+import { useMessages } from "@/hooks/useMessages";
+import { formatDistanceToNow } from "date-fns";
+import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "sonner";
 
 const Inbox = () => {
   const { theme, setTheme } = useTheme();
+  const { user } = useAuth();
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedConversation, setSelectedConversation] = useState<Message | null>(null);
+  const [selectedConversationId, setSelectedConversationId] = useState<string | null>(null);
+  const [messageInput, setMessageInput] = useState("");
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  
+  const { conversations, loading: conversationsLoading } = useConversations();
+  const { messages, loading: messagesLoading, sendMessage } = useMessages(selectedConversationId);
+
+  const selectedConversation = conversations.find(c => c.id === selectedConversationId);
 
   const filteredConversations = conversations.filter((conv) =>
-    conv.name.toLowerCase().includes(searchQuery.toLowerCase())
+    conv.other_user.full_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // Auto-scroll to bottom when new messages arrive
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  const handleSendMessage = async () => {
+    if (!messageInput.trim()) return;
+
+    try {
+      await sendMessage(messageInput);
+      setMessageInput("");
+    } catch (error) {
+      toast.error("Failed to send message");
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
+
+  const formatTimestamp = (timestamp: string) => {
+    try {
+      return formatDistanceToNow(new Date(timestamp), { addSuffix: true });
+    } catch {
+      return timestamp;
+    }
+  };
+
+  const formatMessageTime = (timestamp: string) => {
+    try {
+      const date = new Date(timestamp);
+      return date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    } catch {
+      return '';
+    }
+  };
 
   return (
     <div
@@ -152,42 +117,51 @@ const Inbox = () => {
 
               {/* Conversations */}
               <div className="flex-1 overflow-y-auto">
-                {filteredConversations.map((conversation) => (
-                  <button
-                    key={conversation.id}
-                    onClick={() => setSelectedConversation(conversation)}
-                    className={`w-full p-4 flex items-center gap-3 transition-smooth hover:bg-white/10 border-b border-white/5 ${
-                      selectedConversation?.id === conversation.id ? "bg-white/10" : ""
-                    }`}
-                  >
-                    <div className="relative">
-                      <Avatar className="w-12 h-12">
-                        <AvatarImage src={conversation.avatar} alt={conversation.name} />
-                        <AvatarFallback>{conversation.name[0]}</AvatarFallback>
-                      </Avatar>
-                      {conversation.online && (
-                        <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-background" />
-                      )}
-                    </div>
+                {conversationsLoading ? (
+                  <div className="flex items-center justify-center h-full">
+                    <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+                  </div>
+                ) : filteredConversations.length === 0 ? (
+                  <div className="flex items-center justify-center h-full p-8 text-center">
+                    <p className="text-muted-foreground">No conversations yet. Start chatting!</p>
+                  </div>
+                ) : (
+                  filteredConversations.map((conversation) => (
+                    <button
+                      key={conversation.id}
+                      onClick={() => setSelectedConversationId(conversation.id)}
+                      className={`w-full p-4 flex items-center gap-3 transition-smooth hover:bg-white/10 border-b border-white/5 ${
+                        selectedConversationId === conversation.id ? "bg-white/10" : ""
+                      }`}
+                    >
+                      <div className="relative">
+                        <Avatar className="w-12 h-12">
+                          <AvatarImage src={conversation.other_user.avatar_url} alt={conversation.other_user.full_name} />
+                          <AvatarFallback>{conversation.other_user.full_name[0]}</AvatarFallback>
+                        </Avatar>
+                      </div>
 
-                    <div className="flex-1 text-left min-w-0">
-                      <div className="flex items-center justify-between mb-1">
-                        <h3 className="font-semibold text-sm truncate">{conversation.name}</h3>
-                        <span className="text-xs text-muted-foreground whitespace-nowrap ml-2">
-                          {conversation.timestamp}
-                        </span>
+                      <div className="flex-1 text-left min-w-0">
+                        <div className="flex items-center justify-between mb-1">
+                          <h3 className="font-semibold text-sm truncate">{conversation.other_user.full_name}</h3>
+                          <span className="text-xs text-muted-foreground whitespace-nowrap ml-2">
+                            {conversation.last_message ? formatTimestamp(conversation.last_message.created_at) : ''}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <p className="text-sm text-muted-foreground truncate">
+                            {conversation.last_message?.content || 'No messages yet'}
+                          </p>
+                          {conversation.unread_count > 0 && (
+                            <Badge className="ml-2 bg-primary text-primary-foreground rounded-full min-w-[20px] h-5 flex items-center justify-center text-xs px-1.5">
+                              {conversation.unread_count}
+                            </Badge>
+                          )}
+                        </div>
                       </div>
-                      <div className="flex items-center justify-between">
-                        <p className="text-sm text-muted-foreground truncate">{conversation.lastMessage}</p>
-                        {conversation.unread && (
-                          <Badge className="ml-2 bg-primary text-primary-foreground rounded-full w-5 h-5 flex items-center justify-center text-xs p-0">
-                            {conversation.unread}
-                          </Badge>
-                        )}
-                      </div>
-                    </div>
-                  </button>
-                ))}
+                    </button>
+                  ))
+                )}
               </div>
             </div>
 
@@ -200,67 +174,57 @@ const Inbox = () => {
                     <div className="flex items-center gap-3">
                       <div className="relative">
                         <Avatar className="w-10 h-10">
-                          <AvatarImage src={selectedConversation.avatar} alt={selectedConversation.name} />
-                          <AvatarFallback>{selectedConversation.name[0]}</AvatarFallback>
+                          <AvatarImage src={selectedConversation.other_user.avatar_url} alt={selectedConversation.other_user.full_name} />
+                          <AvatarFallback>{selectedConversation.other_user.full_name[0]}</AvatarFallback>
                         </Avatar>
-                        {selectedConversation.online && (
-                          <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-background" />
-                        )}
                       </div>
                       <div>
-                        <h3 className="font-semibold">{selectedConversation.name}</h3>
-                        <p className="text-xs text-muted-foreground">
-                          {selectedConversation.online ? "Active now" : "Offline"}
-                        </p>
+                        <h3 className="font-semibold">{selectedConversation.other_user.full_name}</h3>
+                        <p className="text-xs text-muted-foreground">Online</p>
                       </div>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <button className="glass w-9 h-9 rounded-lg flex items-center justify-center transition-smooth hover:bg-primary hover:text-primary-foreground">
-                        <Phone className="w-4 h-4" />
-                      </button>
-                      <button className="glass w-9 h-9 rounded-lg flex items-center justify-center transition-smooth hover:bg-primary hover:text-primary-foreground">
-                        <Video className="w-4 h-4" />
-                      </button>
-                      <button className="glass w-9 h-9 rounded-lg flex items-center justify-center transition-smooth hover:bg-primary hover:text-primary-foreground">
-                        <MoreVertical className="w-4 h-4" />
-                      </button>
                     </div>
                   </div>
 
                   {/* Messages Area */}
                   <div className="flex-1 overflow-y-auto p-4 space-y-4">
-                    {/* Demo messages */}
-                    <div className="flex items-start gap-2">
-                      <Avatar className="w-8 h-8">
-                        <AvatarImage src={selectedConversation.avatar} alt={selectedConversation.name} />
-                        <AvatarFallback>{selectedConversation.name[0]}</AvatarFallback>
-                      </Avatar>
-                      <div className="glass rounded-2xl rounded-tl-sm px-4 py-2 max-w-[70%]">
-                        <p className="text-sm">Hey! How's your training going?</p>
-                        <span className="text-xs text-muted-foreground mt-1 block">10:30 AM</span>
+                    {messagesLoading ? (
+                      <div className="flex items-center justify-center h-full">
+                        <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
                       </div>
-                    </div>
-
-                    <div className="flex items-start gap-2 justify-end">
-                      <div className="bg-primary text-primary-foreground rounded-2xl rounded-tr-sm px-4 py-2 max-w-[70%]">
-                        <p className="text-sm">Going great! I'm really seeing progress with the new program.</p>
-                        <span className="text-xs opacity-80 mt-1 block text-right">10:32 AM</span>
+                    ) : messages.length === 0 ? (
+                      <div className="flex items-center justify-center h-full">
+                        <p className="text-muted-foreground">No messages yet. Start the conversation!</p>
                       </div>
-                    </div>
-
-                    <div className="flex items-start gap-2">
-                      <Avatar className="w-8 h-8">
-                        <AvatarImage src={selectedConversation.avatar} alt={selectedConversation.name} />
-                        <AvatarFallback>{selectedConversation.name[0]}</AvatarFallback>
-                      </Avatar>
-                      <div className="glass rounded-2xl rounded-tl-sm px-4 py-2 max-w-[70%]">
-                        <p className="text-sm">{selectedConversation.lastMessage}</p>
-                        <span className="text-xs text-muted-foreground mt-1 block">
-                          {selectedConversation.timestamp}
-                        </span>
-                      </div>
-                    </div>
+                    ) : (
+                      messages.map((message) => {
+                        const isOwnMessage = message.sender_id === user?.id;
+                        
+                        return isOwnMessage ? (
+                          <div key={message.id} className="flex items-start gap-2 justify-end">
+                            <div className="bg-primary text-primary-foreground rounded-2xl rounded-tr-sm px-4 py-2 max-w-[70%]">
+                              <p className="text-sm break-words">{message.content}</p>
+                              <span className="text-xs opacity-80 mt-1 block text-right">
+                                {formatMessageTime(message.created_at)}
+                              </span>
+                            </div>
+                          </div>
+                        ) : (
+                          <div key={message.id} className="flex items-start gap-2">
+                            <Avatar className="w-8 h-8">
+                              <AvatarImage src={selectedConversation.other_user.avatar_url} alt={message.sender.full_name} />
+                              <AvatarFallback>{message.sender.full_name[0]}</AvatarFallback>
+                            </Avatar>
+                            <div className="glass rounded-2xl rounded-tl-sm px-4 py-2 max-w-[70%]">
+                              <p className="text-sm break-words">{message.content}</p>
+                              <span className="text-xs text-muted-foreground mt-1 block">
+                                {formatMessageTime(message.created_at)}
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      })
+                    )}
+                    <div ref={messagesEndRef} />
                   </div>
 
                   {/* Message Input */}
@@ -269,10 +233,17 @@ const Inbox = () => {
                       <Input
                         type="text"
                         placeholder="Type a message..."
+                        value={messageInput}
+                        onChange={(e) => setMessageInput(e.target.value)}
+                        onKeyPress={handleKeyPress}
                         className="flex-1 glass border-white/10"
                       />
-                      <button className="bg-primary text-primary-foreground px-6 py-2 rounded-xl transition-smooth hover:opacity-90">
-                        Send
+                      <button 
+                        onClick={handleSendMessage}
+                        disabled={!messageInput.trim()}
+                        className="bg-primary text-primary-foreground p-2.5 rounded-xl transition-smooth hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <Send className="w-5 h-5" />
                       </button>
                     </div>
                   </div>
