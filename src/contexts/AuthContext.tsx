@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 interface Profile {
   id: string;
   full_name: string;
-  role: 'client' | 'coach' | 'admin';
+  roles: ('client' | 'coach' | 'admin')[];
   is_admin: boolean;
 }
 
@@ -31,14 +31,33 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchProfile = async (userId: string) => {
     try {
-      const { data, error } = await supabase
+      // Fetch profile data
+      const { data: profileData, error: profileError } = await supabase
         .from('profiles')
-        .select('id, full_name, role, is_admin')
+        .select('id, full_name')
         .eq('id', userId)
         .single();
 
-      if (error) throw error;
-      setProfile(data as Profile);
+      if (profileError) throw profileError;
+
+      // Fetch user roles from user_roles table
+      const { data: rolesData, error: rolesError } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', userId);
+
+      if (rolesError) throw rolesError;
+
+      // Combine data
+      const roles = (rolesData || []).map(r => r.role) as ('client' | 'coach' | 'admin')[];
+      const is_admin = roles.includes('admin');
+
+      setProfile({
+        id: profileData.id,
+        full_name: profileData.full_name,
+        roles,
+        is_admin
+      });
     } catch (error) {
       console.error('Error fetching profile:', error);
     }
