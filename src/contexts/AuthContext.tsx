@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 interface Profile {
   id: string;
   full_name: string;
+  role: 'client' | 'coach' | 'admin';
+  is_admin: boolean;
 }
 
 interface AuthContextType {
@@ -31,12 +33,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       const { data, error } = await supabase
         .from('profiles')
-        .select('id, full_name')
+        .select('id, full_name, role, is_admin')
         .eq('id', userId)
         .single();
 
       if (error) throw error;
-      setProfile(data);
+      setProfile(data as Profile);
     } catch (error) {
       console.error('Error fetching profile:', error);
     }
