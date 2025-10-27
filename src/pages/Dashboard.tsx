@@ -5,6 +5,7 @@ import { Calendar, Users, Bell, TrendingUp, Mail, Target, Search, Moon, Sun, Plu
 import { InfoCard } from "@/components/Exercise/InfoCard";
 import { useTheme } from "next-themes";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 import gradientBg from "@/assets/gradient-bg.jpg";
 import gradientBgDark from "@/assets/gradient-bg-dark.png";
 import legcurlImg from "@/assets/legcurl.jpg";
@@ -20,7 +21,10 @@ import rachelKimImg from "@/assets/rachel-kim.jpg";
 const Dashboard = () => {
   const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
+  const { profile } = useAuth();
   const [currentTime, setCurrentTime] = useState(new Date());
+
+  const firstName = profile?.full_name?.split(' ')[0] || 'User';
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -101,7 +105,7 @@ const Dashboard = () => {
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8 gap-4">
           <div>
             <h1 className="text-3xl lg:text-4xl font-bold mb-2">
-              {getGreeting()}, <span className="text-black dark:text-white">Dan</span>
+              {getGreeting()}, <span className="text-black dark:text-white">{firstName}</span>
             </h1>
             <p className="text-muted-foreground text-lg">Ready to elevate your athletes today?</p>
           </div>
