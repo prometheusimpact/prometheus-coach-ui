@@ -27,6 +27,14 @@ export const NewMessageDialog = ({ open, onOpenChange, onConversationSelected }:
   const [searchQuery, setSearchQuery] = useState('');
   const [creating, setCreating] = useState(false);
 
+  // Clear search when modal closes
+  const handleOpenChange = (newOpen: boolean) => {
+    if (!newOpen) {
+      setSearchQuery('');
+    }
+    onOpenChange(newOpen);
+  };
+
   const filteredUsers = users.filter(u =>
     u.full_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -98,9 +106,9 @@ export const NewMessageDialog = ({ open, onOpenChange, onConversationSelected }:
   };
 
   const getRoleBadgeColor = (roles: string[]) => {
-    if (roles.includes('admin')) return 'bg-red-500/20 text-red-300 border-red-500/30';
-    if (roles.includes('coach')) return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
-    return 'bg-green-500/20 text-green-300 border-green-500/30';
+    if (roles.includes('admin')) return 'bg-destructive/20 text-destructive border-destructive/30';
+    if (roles.includes('coach')) return 'bg-primary/20 text-primary border-primary/30';
+    return 'bg-accent/20 text-accent-foreground border-accent/30';
   };
 
   const getRoleLabel = (roles: string[]) => {
@@ -110,16 +118,16 @@ export const NewMessageDialog = ({ open, onOpenChange, onConversationSelected }:
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[500px] glass border-white/10">
+    <Dialog open={open} onOpenChange={handleOpenChange}>
+      <DialogContent className="sm:max-w-[500px] bg-background/95 backdrop-blur-sm border-border">
         <DialogHeader>
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
               <MessageSquarePlus className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <DialogTitle className="text-xl">New Message</DialogTitle>
-              <DialogDescription>Select someone to start a conversation</DialogDescription>
+              <DialogTitle className="text-xl text-foreground">New Message</DialogTitle>
+              <DialogDescription className="text-muted-foreground">Select someone to start a conversation</DialogDescription>
             </div>
           </div>
         </DialogHeader>
@@ -130,10 +138,10 @@ export const NewMessageDialog = ({ open, onOpenChange, onConversationSelected }:
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               type="text"
-              placeholder="Search users..."
+              placeholder="Search by name..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 glass border-white/10"
+              className="pl-10 bg-muted/50 border-border focus-visible:ring-primary"
             />
           </div>
 
@@ -145,8 +153,8 @@ export const NewMessageDialog = ({ open, onOpenChange, onConversationSelected }:
               </div>
             ) : filteredUsers.length === 0 ? (
               <div className="text-center py-12">
-                <p className="text-muted-foreground">
-                  {searchQuery ? 'No users found' : 'No users available'}
+                <p className="text-muted-foreground text-sm">
+                  {searchQuery ? `No users found matching "${searchQuery}"` : 'No users available'}
                 </p>
               </div>
             ) : (
@@ -155,17 +163,17 @@ export const NewMessageDialog = ({ open, onOpenChange, onConversationSelected }:
                   key={availableUser.id}
                   onClick={() => handleUserSelect(availableUser.id)}
                   disabled={creating}
-                  className="w-full p-3 flex items-center gap-3 rounded-xl glass-hover transition-smooth hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full p-3 flex items-center gap-3 rounded-lg border border-transparent hover:border-border hover:bg-accent/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Avatar className="w-12 h-12">
                     <AvatarImage src={undefined} alt={availableUser.full_name} />
-                    <AvatarFallback className="bg-primary/20 text-primary font-semibold">
-                      {availableUser.full_name[0]}
+                    <AvatarFallback className="bg-primary/10 text-primary font-semibold">
+                      {availableUser.full_name[0].toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
 
                   <div className="flex-1 text-left min-w-0">
-                    <h3 className="font-semibold text-sm truncate">{availableUser.full_name}</h3>
+                    <h3 className="font-semibold text-sm text-foreground truncate">{availableUser.full_name}</h3>
                     <Badge 
                       variant="outline" 
                       className={`mt-1 text-xs ${getRoleBadgeColor(availableUser.roles)}`}
