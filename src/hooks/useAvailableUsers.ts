@@ -16,111 +16,48 @@ export const useAvailableUsers = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      console.log('🔍 [useAvailableUsers] Starting fetch...');
-      console.log('🔍 [useAvailableUsers] Current user:', user?.id);
+      console.log('🔍 [useAvailableUsers] ========== FETCH STARTED ==========');
+      console.log('🔍 [useAvailableUsers] Current user:', user);
+      console.log('🔍 [useAvailableUsers] Current user ID:', user?.id);
       console.log('🔍 [useAvailableUsers] Current profile:', profile);
-      
-      // In DEV_MODE without auth, show all users
-      if (!user || !profile) {
-        console.log('⚠️ [useAvailableUsers] No user or profile - fetching ALL users for DEV_MODE');
-        
-        // Set timeout to prevent infinite loading
-        const timeoutId = setTimeout(() => {
-          setLoading(false);
-          setError('Request timed out. Please try again.');
-        }, 3000);
-
-        try {
-          // Get ALL profiles when no user (DEV_MODE)
-          const { data: profiles, error: profilesError } = await supabase
-            .from('profiles')
-            .select('id, full_name');
-
-          if (profilesError) throw profilesError;
-
-          console.log('✅ [useAvailableUsers] Fetched profiles (no auth):', profiles?.length);
-
-          if (!profiles || profiles.length === 0) {
-            console.log('⚠️ [useAvailableUsers] No profiles found in database');
-            setUsers([]);
-            setError(null);
-            clearTimeout(timeoutId);
-            setLoading(false);
-            return;
-          }
-
-          // Get roles for each profile
-          const { data: userRoles, error: rolesError } = await supabase
-            .from('user_roles')
-            .select('user_id, role')
-            .in('user_id', profiles.map(p => p.id));
-
-          if (rolesError) throw rolesError;
-
-          console.log('✅ [useAvailableUsers] Fetched user roles:', userRoles?.length);
-
-          // Combine profiles with their roles
-          const usersWithRoles = profiles.map(profile => {
-            const roles = userRoles
-              ?.filter(ur => ur.user_id === profile.id)
-              .map(ur => ur.role) || [];
-            
-            return {
-              id: profile.id,
-              full_name: profile.full_name,
-              roles,
-            };
-          });
-
-          console.log('✅ [useAvailableUsers] Users with roles:', usersWithRoles);
-          setUsers(usersWithRoles);
-          setError(null);
-          clearTimeout(timeoutId);
-          setLoading(false);
-          return;
-        } catch (error) {
-          console.error('❌ [useAvailableUsers] Error in DEV_MODE:', error);
-          setError('Failed to load users');
-          setLoading(false);
-          return;
-        }
-      }
 
       // Set timeout to prevent infinite loading
       const timeoutId = setTimeout(() => {
+        console.log('⏱️ [useAvailableUsers] TIMEOUT - Request took too long');
         setLoading(false);
         setError('Request timed out. Please try again.');
-      }, 3000);
+      }, 5000);
 
       try {
-        // Determine which roles to fetch based on current user's role
-        let targetRoles: string[] = [];
+        // SIMPLIFIED QUERY: Get ALL profiles except current user (if logged in)
+        console.log('📡 [useAvailableUsers] Fetching profiles from database...');
         
-        if (profile.roles.includes('client')) {
-          // Clients can message coaches and admins
-          targetRoles = ['coach', 'admin'];
-        } else if (profile.roles.includes('coach')) {
-          // Coaches can message clients and admins
-          targetRoles = ['client', 'admin'];
-        } else if (profile.roles.includes('admin')) {
-          // Admins can message everyone
-          targetRoles = ['client', 'coach', 'admin'];
+        let query = supabase
+          .from('profiles')
+          .select('id, full_name');
+        
+        // Only filter out current user if logged in
+        if (user?.id) {
+          console.log('🔍 [useAvailableUsers] Filtering out current user:', user.id);
+          query = query.neq('id', user.id);
+        } else {
+          console.log('⚠️ [useAvailableUsers] No user logged in - showing ALL users');
         }
 
-        console.log('🔍 [useAvailableUsers] Target roles:', targetRoles);
+        const { data: profiles, error: profilesError } = await query;
 
-        // Get all profiles except current user
-        const { data: profiles, error: profilesError } = await supabase
-          .from('profiles')
-          .select('id, full_name')
-          .neq('id', user.id);
+        console.log('📡 [useAvailableUsers] Supabase response received');
+        console.log('✅ [useAvailableUsers] Raw profiles data:', profiles);
+        console.log('❌ [useAvailableUsers] Profiles error:', profilesError);
 
-        if (profilesError) throw profilesError;
-
-        console.log('✅ [useAvailableUsers] Fetched profiles:', profiles?.length);
+        if (profilesError) {
+          console.error('❌ [useAvailableUsers] ERROR fetching profiles:', profilesError);
+          throw profilesError;
+        }
 
         if (!profiles || profiles.length === 0) {
-          console.log('⚠️ [useAvailableUsers] No other profiles found in database');
+          console.log('⚠️ [useAvailableUsers] No profiles returned from database');
+          console.log('⚠️ [useAvailableUsers] This means: Either no other users exist, or RLS is blocking access');
           setUsers([]);
           setError(null);
           clearTimeout(timeoutId);
@@ -128,17 +65,24 @@ export const useAvailableUsers = () => {
           return;
         }
 
+        console.log('✅ [useAvailableUsers] Found', profiles.length, 'profile(s)');
+
         // Get roles for each profile
+        console.log('📡 [useAvailableUsers] Fetching user roles...');
         const { data: userRoles, error: rolesError } = await supabase
           .from('user_roles')
           .select('user_id, role')
           .in('user_id', profiles.map(p => p.id));
 
-        if (rolesError) throw rolesError;
+        console.log('✅ [useAvailableUsers] User roles data:', userRoles);
+        console.log('❌ [useAvailableUsers] Roles error:', rolesError);
 
-        console.log('✅ [useAvailableUsers] Fetched user roles:', userRoles?.length);
+        if (rolesError) {
+          console.error('❌ [useAvailableUsers] ERROR fetching roles:', rolesError);
+          // Don't throw - we can still show users without roles
+        }
 
-        // Combine profiles with their roles and filter by target roles
+        // Combine profiles with their roles - NO FILTERING
         const usersWithRoles = profiles.map(profile => {
           const roles = userRoles
             ?.filter(ur => ur.user_id === profile.id)
@@ -151,20 +95,16 @@ export const useAvailableUsers = () => {
           };
         });
 
-        console.log('🔍 [useAvailableUsers] All users with roles:', usersWithRoles);
-
-        // Filter users who have at least one of the target roles
-        const filteredUsers = usersWithRoles.filter(u => 
-          u.roles.some(role => targetRoles.includes(role))
-        );
-
-        console.log('✅ [useAvailableUsers] Filtered users:', filteredUsers.length, filteredUsers);
-        setUsers(filteredUsers);
+        console.log('✅ [useAvailableUsers] Final users list:', usersWithRoles);
+        console.log('✅ [useAvailableUsers] Total users to display:', usersWithRoles.length);
+        
+        setUsers(usersWithRoles);
         setError(null);
+        clearTimeout(timeoutId);
+        setLoading(false);
       } catch (error) {
-        console.error('Error fetching available users:', error);
+        console.error('❌ [useAvailableUsers] CATCH ERROR:', error);
         setError('Failed to load users');
-      } finally {
         clearTimeout(timeoutId);
         setLoading(false);
       }
