@@ -2,6 +2,16 @@ import { ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 
+// ===============================================
+// 🔧 DEVELOPMENT MODE TOGGLE
+// ===============================================
+// Set this to 'true' to bypass authentication during development
+// Set this to 'false' for production (authentication required)
+// 
+// ⚠️ IMPORTANT: Always set DEV_MODE = false before deploying!
+// ===============================================
+const DEV_MODE = true;
+
 interface ProtectedRouteProps {
   children: ReactNode;
 }
@@ -9,6 +19,11 @@ interface ProtectedRouteProps {
 export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
+
+  // Skip authentication checks in development mode
+  if (DEV_MODE) {
+    return <>{children}</>;
+  }
 
   useEffect(() => {
     if (!loading && !user) {
