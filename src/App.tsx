@@ -10,6 +10,9 @@ import Saved from "./pages/Saved";
 import Calendar from "./pages/Calendar";
 import Inbox from "./pages/Inbox";
 import Requests from "./pages/Requests";
+import Clients from "./pages/Clients";
+import Settings from "./pages/Settings";
+import Account from "./pages/Account";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +31,9 @@ const App = () => (
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/inbox" element={<Inbox />} />
           <Route path="/requests" element={<Requests />} />
+          <Route path="/clients" element={<Clients />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/account" element={<Account />} />
           <Route path="/barbell-back-squat" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
