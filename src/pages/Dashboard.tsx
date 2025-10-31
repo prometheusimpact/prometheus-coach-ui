@@ -220,7 +220,10 @@ const Dashboard = () => {
           <div className="lg:col-span-2">
             <h2 className="text-2xl font-bold mb-4">Exercises</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="glass rounded-2xl overflow-hidden group cursor-pointer transition-smooth glass-hover">
+              <div 
+                className="glass rounded-2xl overflow-hidden group cursor-pointer transition-smooth glass-hover"
+                onClick={() => navigate('/barbell-back-squat')}
+              >
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src={legcurlImg} 
@@ -238,7 +241,10 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div className="glass rounded-2xl overflow-hidden group cursor-pointer transition-smooth glass-hover">
+              <div 
+                className="glass rounded-2xl overflow-hidden group cursor-pointer transition-smooth glass-hover"
+                onClick={() => navigate('/barbell-back-squat')}
+              >
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src={highkneesImg} 
